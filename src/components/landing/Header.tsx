@@ -10,7 +10,7 @@ export default function Header() {
 
     return (
         <header className='shadow-sm'>
-            <div className='flex w-full max-w-[75%] justify-self-end rounded-none rounded-bl-full bg-sky-600'>
+            <div className='flex w-full max-w-375 justify-self-end rounded-none rounded-bl-full bg-sky-600'>
                 <div className='mx-auto mr-[17%] w-full max-w-[75%] text-white'>
                     <div className='mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-2'>
                         <div className='flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium'>
