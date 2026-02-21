@@ -330,19 +330,18 @@ export default function AboutPage() {
             </section>
 
 
-      {/*Executive Profiles*/}
+            {/*Executive Profiles*/}
             <section className="bg-white pb-10">
                 <div className='mx-auto max-w-7xl px-6 lg:px-8'>
                     <div className='bg-[#f0f9ff] rounded-4xl p-8 shadow-sm'>
 
-
                         <div className='mb-12 overflow-hidden rounded-4xl shadow-lg'>
-                            <div className='relative h-64 w-full sm:h-80 md:h-100 lg:h-125'>
+                            <div className='relative h-64 w-full sm:h-80 md:h-100 lg:h-100'>
                                 <Image
                                     src='/logicmatrix/exec_main.png'
                                     alt='Executive Team'
                                     fill
-                                    className='object-cover'
+                                    className='object-fill'
                                 />
                             </div>
                         </div>
