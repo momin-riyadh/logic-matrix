@@ -70,22 +70,27 @@ export default function Header() {
 
                     </Link>
 
+                    {/* Desktop Navigation */}
                     <nav className='hidden items-center gap-8 text-sm font-semibold text-slate-700 lg:flex'
                          aria-label='Primary'>
                         {navLinks.map((link) =>
                             link.children ? (
+                                // Dropdown menu with hover-only activation
                                 <div className='group relative' key={link.label}>
-                                    <button className='inline-flex items-center gap-1 hover:text-slate-900'
-                                            type='button'>
+                                    {/* The parent link is clickable while the dropdown shows on hover */}
+                                    <a
+                                        href={link.href}
+                                        className='inline-flex items-center gap-1 hover:text-slate-900'>
                                         {link.label}
                                         <svg className='h-4 w-4' viewBox='0 0 24 24' fill='none' stroke='currentColor'
                                              strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'
                                              aria-hidden='true'>
                                             <path d='m6 9 6 6 6-6'/>
                                         </svg>
-                                    </button>
+                                    </a>
+                                    {/* Dropdown menu shown on hover with smooth transition */}
                                     <div
-                                        className='invisible absolute left-0 top-full z-10 mt-3 w-56 translate-y-2 rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-xl shadow-slate-200/40 opacity-0 transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100'>
+                                        className='invisible absolute left-0 top-full z-10 mt-1 w-56 translate-y-2 rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-xl shadow-slate-200/40 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100'>
                                         {link.children.map((child) => (
                                             <a className='block rounded-lg px-3 py-2 hover:bg-slate-100'
                                                href={child.href} key={child.label}>

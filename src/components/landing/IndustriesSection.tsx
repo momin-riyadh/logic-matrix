@@ -13,10 +13,10 @@ export default function IndustriesSection() {
 
         <div className='mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
           {industries.map((industry, index) => (
-            <article
-              className={`reveal delay-${Math.min(index + 3, 6)} rounded-md aspect-square border border-slate-200 bg-white text-center shadow-sm flex flex-col justify-center items-center`}
-              key={industry.title}
-            >
+              <article
+                  className={`reveal delay-${Math.min(index + 3, 6)} rounded-md aspect-square border border-slate-200 bg-white text-center shadow-sm flex flex-col justify-center items-center transition-shadow hover:shadow-[0_4px_20px_rgba(36,132,195,0.47)]`}
+                  key={industry.title}
+              >
               <span className={`mx-auto flex h-12 w-12 items-center justify-center rounded-md ${industry.iconWrapperClassName}`}>
                 {industry.icon}
               </span>

@@ -27,12 +27,14 @@ export default function HeroSection({
       <div className='absolute inset-0'>
         <Image src={backgroundSrc} alt='' fill priority sizes='100vw' className='object-cover object-center' />
         <div className='absolute inset-0 bg-white/30' />
-        <div className='absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white/90 via-white/30 to-transparent' />
+        <div className='absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-white/90 via-white/30 to-transparent' />
       </div>
       <div className='relative mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-16 text-center sm:min-h-[75vh] lg:min-h-[80vh]'>
-        <span className='reveal inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-slate-600 shadow-sm'>
-          {badge}
-        </span>
+        {badge && (
+          <span className='reveal inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-slate-600 shadow-sm'>
+            {badge}
+          </span>
+        )}
         <h1 className='reveal delay-1 mt-6 text-3xl font-semibold leading-tight text-slate-800 sm:text-4xl lg:text-5xl'>
           {title}
         </h1>

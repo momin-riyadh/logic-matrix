@@ -1,18 +1,38 @@
 import { processSteps } from './landing-data';
 import SectionHeading from './SectionHeading';
 
-export default function ProcessSection() {
+type ProcessStep = {
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: React.ReactNode;
+  gradientClassName: string;
+};
+
+type ProcessSectionProps = {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  steps?: ProcessStep[];
+};
+
+export default function ProcessSection({
+  eyebrow = 'Process',
+  title = 'Design & Development Process',
+  description = 'A clear, proven delivery flow that keeps projects aligned, transparent, and moving fast from idea to launch.',
+  steps = processSteps,
+}: ProcessSectionProps) {
   return (
     <section className='bg-white'>
       <div className='mx-auto max-w-6xl px-6 py-16 md:py-24'>
         <SectionHeading
-          eyebrow='Process'
-          title='Design & Development Process'
-          description='A clear, proven delivery flow that keeps projects aligned, transparent, and moving fast from idea to launch.'
+          eyebrow={eyebrow}
+          title={title}
+          description={description}
         />
 
         <div className='relative mt-12 space-y-10 lg:space-y-14'>
-          {processSteps.map((step, index) => {
+          {steps.map((step, index) => {
             const isEven = index % 2 === 1;
             return (
               <article
