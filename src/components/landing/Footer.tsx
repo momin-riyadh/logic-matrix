@@ -69,7 +69,10 @@ export default function Footer() {
             <ul className='mt-5 space-y-4 text-[15px] text-white/85'>
               {company.map((item) => (
                 <li key={item}>
-                  <a className='transition hover:text-white' href='#'>
+                  <a
+                    className='transition hover:text-white'
+                    href={item === 'Terms & Conditions' ? '/terms-and-conditions' : '#'}
+                  >
                     {item}
                   </a>
                 </li>

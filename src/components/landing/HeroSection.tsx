@@ -38,7 +38,7 @@ export default function HeroSection({
         <h1 className='reveal delay-1 mt-6 text-3xl font-semibold leading-tight text-slate-800 sm:text-4xl lg:text-5xl'>
           {title}
         </h1>
-        <p className='reveal delay-2 mt-4 max-w-3xl text-base text-slate-600 sm:text-lg'>
+        <p className='reveal delay-2 mt-4 max-w-3xl whitespace-pre-line text-base text-slate-600 sm:text-lg'>
           {description}
         </p>
         <div className='reveal delay-3 mt-8 flex flex-wrap items-center justify-center gap-6'>

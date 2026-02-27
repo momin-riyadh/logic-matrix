@@ -124,7 +124,10 @@ export default function TestimonialsSlider() {
     }
 
     /* -- responsive cols (synchronous before paint) --- */
-    useLayoutEffect(() => {
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
         setCols(getCols(window.innerWidth));
 
         const onResize = () => setCols(getCols(window.innerWidth));
@@ -160,7 +163,11 @@ export default function TestimonialsSlider() {
     }, []);
 
     /* -- current window of visible cards -------------- */
-    const slides = Array.from({ length: cols }, (_, i) => testimonials[wrap(current + i)]);
+    const slides = isMounted 
+        ? Array.from({ length: cols }, (_, i) => testimonials[wrap(current + i)])
+        : [];
+
+    if (!isMounted) return null;
 
     return (
         <>

@@ -170,6 +170,26 @@ export type TestimonialItem = {
 };
 
 /**
+ * Portfolio item for featured, the latest blog, or popular projects
+ * @property category - Category or status (e.g., "Featured", "Latest")
+ * @property readTime - Time to read (e.g., "6 MIN READ")
+ * @property title - Project/Blog title
+ * @property date - Published date
+ * @property description - Brief description
+ * @property image - Path to image
+ * @property href - Link to full project/blog
+ */
+export type PortfolioItem = {
+    category: string;
+    readTime?: string;
+    title: string;
+    date: string;
+    description: string;
+    image: string;
+    href: string;
+};
+
+/**
  * Footer navigation group
  * @property title - Section heading
  * @property items - Array of link labels within this group
@@ -187,14 +207,14 @@ export type FooterGroup = {
 /**
  * Main navigation links
  * Used in: Header component
- * Flow: Header.tsx imports this → maps over array → renders nav items
+ * Flow: Header.tsx imports this → maps over an array → renders nav items
  * Note: Items with 'children' array render as dropdown menus
  */
 export const navLinks: NavLink[] = [
     {
         label: 'About us', href: '/about',
         children: [
-            {label: 'Our Approach', href: '#'},
+            {label: 'Our Approach', href: '/our-approach'},
             {label: 'Industry We Serve             ', href: '/industry-we-serve'},
             {label: 'Design and development Process', href: '/design-and-development'},
         ],
@@ -203,15 +223,15 @@ export const navLinks: NavLink[] = [
         label: 'Services',
         href: '#'
     },
-    {label: 'Portfolio', href: '#'},
-    {label: 'Blog', href: '#'},
+    {label: 'Portfolio', href: '/portfolio'},
+    {label: 'Blog', href: '/blog'},
     {label: 'Career', href: '#'},
 ];
 
 /**
  * Company statistics/achievements
  * Used in: Stats or Hero component
- * Flow: Component imports → maps over array → displays counters
+ * Flow: Component imports → maps over an array → displays counters
  */
 export const stats: StatItem[] = [
     {value: '9+', label: 'Years Experience'},
@@ -430,19 +450,19 @@ export const devOpsCategories: DevOpsCategory[] = [
             {
                 name: 'AWS',
                 accentClassName: 'text-slate-700',
-                imageSrc: '/assets/images/devops/cloud platforms/amazon_web_services_logo.svg',
+                imageSrc: '/assets/images/devops/cloud-platforms/amazon_web_services_logo.svg',
                 imageAlt: 'AWS logo',
             },
             {
                 name: 'Azure',
                 accentClassName: 'text-sky-600',
-                imageSrc: '/assets/images/devops/cloud platforms/azure.png',
+                imageSrc: '/assets/images/devops/cloud-platforms/azure.png',
                 imageAlt: 'Azure logo',
             },
             {
                 name: 'Google Cloud',
                 accentClassName: 'text-amber-600',
-                imageSrc: '/assets/images/devops/cloud platforms/gcp.png',
+                imageSrc: '/assets/images/devops/cloud-platforms/gcp.png',
                 imageAlt: 'Google Cloud logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -455,19 +475,19 @@ export const devOpsCategories: DevOpsCategory[] = [
             {
                 name: 'Docker',
                 accentClassName: 'text-sky-500',
-                imageSrc: '/assets/images/devops/containerization & orchestration/docker.png',
+                imageSrc: '/assets/images/devops/containerization-orchestration/docker.png',
                 imageAlt: 'Docker logo',
             },
             {
                 name: 'Kubernetes',
                 accentClassName: 'text-blue-600',
-                imageSrc: '/assets/images/devops/containerization & orchestration/kubernetes.png',
+                imageSrc: '/assets/images/devops/containerization-orchestration/kubernetes.png',
                 imageAlt: 'Kubernetes logo',
             },
             {
                 name: 'Podman',
                 accentClassName: 'text-violet-600',
-                imageSrc: '/assets/images/devops/containerization & orchestration/podman.png',
+                imageSrc: '/assets/images/devops/containerization-orchestration/podman.png',
                 imageAlt: 'Podman logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -480,19 +500,19 @@ export const devOpsCategories: DevOpsCategory[] = [
             {
                 name: 'GitHub',
                 accentClassName: 'text-slate-800',
-                imageSrc: '/assets/images/devops/cicd & automation/github.png',
+                imageSrc: '/assets/images/devops/cicd-automation/github.png',
                 imageAlt: 'GitHub logo',
             },
             {
                 name: 'GitLab',
                 accentClassName: 'text-orange-500',
-                imageSrc: '/assets/images/devops/cicd & automation/gitlab.png',
+                imageSrc: '/assets/images/devops/cicd-automation/gitlab.png',
                 imageAlt: 'GitLab logo',
             },
             {
                 name: 'Jenkins',
                 accentClassName: 'text-red-500',
-                imageSrc: '/assets/images/devops/cicd & automation/jenkins.png',
+                imageSrc: '/assets/images/devops/cicd-automation/jenkins.png',
                 imageAlt: 'Jenkins logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -505,19 +525,19 @@ export const devOpsCategories: DevOpsCategory[] = [
             {
                 name: 'Terraform',
                 accentClassName: 'text-indigo-600',
-                imageSrc: '/assets/images/devops/infrastructure as code/teraform.png',
+                imageSrc: '/assets/images/devops/infrastructure-as-code/teraform.png',
                 imageAlt: 'Terraform logo',
             },
             {
                 name: 'Ansible',
                 accentClassName: 'text-slate-800',
-                imageSrc: '/assets/images/devops/infrastructure as code/ansible.png',
+                imageSrc: '/assets/images/devops/infrastructure-as-code/ansible.png',
                 imageAlt: 'Ansible logo',
             },
             {
                 name: 'Pulumi',
                 accentClassName: 'text-fuchsia-600',
-                imageSrc: '/assets/images/devops/infrastructure as code/pulumi.png',
+                imageSrc: '/assets/images/devops/infrastructure-as-code/pulumi.png',
                 imageAlt: 'Pulumi logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -530,19 +550,19 @@ export const devOpsCategories: DevOpsCategory[] = [
             {
                 name: 'Prometheus',
                 accentClassName: 'text-orange-500',
-                imageSrc: '/assets/images/devops/monitoring & logging/promethouse.png',
+                imageSrc: '/assets/images/devops/monitoring-logging/promethouse.png',
                 imageAlt: 'Prometheus logo',
             },
             {
                 name: 'Grafana',
                 accentClassName: 'text-amber-600',
-                imageSrc: '/assets/images/devops/monitoring & logging/grafana.png',
+                imageSrc: '/assets/images/devops/monitoring-logging/grafana.png',
                 imageAlt: 'Grafana logo',
             },
             {
                 name: 'New Relic',
                 accentClassName: 'text-emerald-600',
-                imageSrc: '/assets/images/devops/monitoring & logging/new relic.png',
+                imageSrc: '/assets/images/devops/monitoring-logging/new-relic.png',
                 imageAlt: 'New Relic logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -564,13 +584,13 @@ export const devSecOpsCategories: DevSecOpsCategory[] = [
             {
                 name: 'SonarQube',
                 accentClassName: 'text-slate-800',
-                imageSrc: '/assets/images/devsecops/code quality & sast/sonar.png',
+                imageSrc: '/assets/images/devsecops/code-quality-sast/sonar.png',
                 imageAlt: 'SonarQube logo',
             },
             {
                 name: 'Semgrep',
                 accentClassName: 'text-emerald-500',
-                imageSrc: '/assets/images/devsecops/code quality & sast/sem.png',
+                imageSrc: '/assets/images/devsecops/code-quality-sast/sem.png',
                 imageAlt: 'Semgrep logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -583,13 +603,13 @@ export const devSecOpsCategories: DevSecOpsCategory[] = [
             {
                 name: 'Trivy',
                 accentClassName: 'text-sky-600',
-                imageSrc: '/assets/images/devsecops/vulnerability scanning/trivy.png',
+                imageSrc: '/assets/images/devsecops/vulnerability-scanning/trivy.png',
                 imageAlt: 'Trivy logo',
             },
             {
                 name: 'Snyk',
                 accentClassName: 'text-indigo-600',
-                imageSrc: '/assets/images/devsecops/vulnerability scanning/snyk.png',
+                imageSrc: '/assets/images/devsecops/vulnerability-scanning/snyk.png',
                 imageAlt: 'Snyk logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -602,13 +622,13 @@ export const devSecOpsCategories: DevSecOpsCategory[] = [
             {
                 name: 'AWS Secrets Manager',
                 accentClassName: 'text-orange-500',
-                imageSrc: '/assets/images/devsecops/secrets management/aws secret manager.png',
+                imageSrc: '/assets/images/devsecops/secrets-management/aws-secret-manager.png',
                 imageAlt: 'AWS Secrets Manager logo',
             },
             {
                 name: 'Azure Key Vault',
                 accentClassName: 'text-sky-600',
-                imageSrc: '/assets/images/devsecops/secrets management/azure key.png',
+                imageSrc: '/assets/images/devsecops/secrets-management/azure-key.png',
                 imageAlt: 'Azure Key Vault logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -621,13 +641,13 @@ export const devSecOpsCategories: DevSecOpsCategory[] = [
             {
                 name: 'Aqua',
                 accentClassName: 'text-blue-600',
-                imageSrc: '/assets/images/devsecops/container & runtime security/aqua.png',
+                imageSrc: '/assets/images/devsecops/container-runtime-security/aqua.png',
                 imageAlt: 'Aqua Security logo',
             },
             {
                 name: 'Falco',
                 accentClassName: 'text-cyan-600',
-                imageSrc: '/assets/images/devsecops/container & runtime security/fatco.png',
+                imageSrc: '/assets/images/devsecops/container-runtime-security/fatco.png',
                 imageAlt: 'Falco logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -640,13 +660,13 @@ export const devSecOpsCategories: DevSecOpsCategory[] = [
             {
                 name: 'Open Policy Agent',
                 accentClassName: 'text-slate-700',
-                imageSrc: '/assets/images/devsecops/compliance & policy/open police.png',
+                imageSrc: '/assets/images/devsecops/compliance-policy/open-policy.png',
                 imageAlt: 'Open Policy Agent logo',
             },
             {
                 name: 'Kyverno',
                 accentClassName: 'text-orange-500',
-                imageSrc: '/assets/images/devsecops/compliance & policy/vector.png',
+                imageSrc: '/assets/images/devsecops/compliance-policy/vector.png',
                 imageAlt: 'Kyverno logo',
             },
             {name: 'Explore', variant: 'action'},
@@ -1033,7 +1053,7 @@ export const contactInfo: ContactItem[] = [
 
 /**
  * Client testimonials/reviews
- * Used in: Testimonials component (likely with carousel/slider)
+ * Used in: A testimonials component (likely with carousel/slider)
  * Flow: Component imports → maps over array → renders testimonial cards or slides
  * Note: Each testimonial has unique ID for carousel navigation
  */
@@ -1112,5 +1132,102 @@ export const footerGroups: FooterGroup[] = [
     {
         title: 'More',
         items: ['About us', 'Contact', 'Career', 'News & Events', 'FAQs'],
+    },
+];
+
+/**
+ * Featured portfolio item
+ */
+export const featuredProject: PortfolioItem = {
+    category: 'Featured',
+    readTime: '6 MIN READ',
+    title: 'Finding the Best B2B Contact Database for Better Cold Outreach',
+    date: 'October 24, 2023',
+    description: "With Arkatechture's help, Members First Credit Union will be using data to pinpoint products and services that will benefit their members most.",
+    image: '/logicmatrix/recent-work-1.png',
+    href: '#',
+};
+
+/**
+ * Latest blog posts
+ */
+export const latestBlogs: PortfolioItem[] = [
+    {
+        category: 'Latest',
+        readTime: '2 MIN READ',
+        title: 'Finding the Best B2B',
+        date: 'October 24, 2023',
+        description: "With Arkatechture's help, Members First Credit Union will be using data to pinpoint products.",
+        image: '/logicmatrix/recent-work-2.png',
+        href: '#',
+    },
+    {
+        category: 'Latest',
+        readTime: '2 MIN READ',
+        title: 'Finding the Best B2B',
+        date: 'October 24, 2023',
+        description: "With Arkatechture's help, Members First Credit Union will be using data to pinpoint products.",
+        image: '/logicmatrix/recent-work-3.png',
+        href: '#',
+    },
+];
+
+/**
+ * Most popular portfolio items
+ */
+export const popularProjects: PortfolioItem[] = [
+    {
+        category: 'Latest',
+        readTime: '2 MIN READ',
+        title: 'Members First Credit',
+        date: '12.24.2023',
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
+        image: '/logicmatrix/recent-work-4.png',
+        href: '#',
+    },
+    {
+        category: 'Latest',
+        readTime: '2 MIN READ',
+        title: 'Members First Credit',
+        date: '12.24.2023',
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
+        image: '/logicmatrix/recent-work-1.png',
+        href: '#',
+    },
+    {
+        category: 'Latest',
+        readTime: '2 MIN READ',
+        title: 'Members First Credit',
+        date: '12.24.2023',
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
+        image: '/logicmatrix/recent-work-2.png',
+        href: '#',
+    },
+    {
+        category: 'Latest',
+        readTime: '2 MIN READ',
+        title: 'Members First Credit',
+        date: '12.24.2023',
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
+        image: '/logicmatrix/recent-work-3.png',
+        href: '#',
+    },
+    {
+        category: 'Latest',
+        readTime: '2 MIN READ',
+        title: 'Members First Credit',
+        date: '12.24.2023',
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
+        image: '/logicmatrix/recent-work-4.png',
+        href: '#',
+    },
+    {
+        category: 'Latest',
+        readTime: '2 MIN READ',
+        title: 'Members First Credit',
+        date: '12.24.2023',
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
+        image: '/logicmatrix/recent-work-1.png',
+        href: '#',
     },
 ];
