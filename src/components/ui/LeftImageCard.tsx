@@ -15,6 +15,8 @@ type LeftImageCardProps = {
     imageSrc: string
     imageAlt?: string
     className?: string
+    reverse?: boolean
+    listItems?: string[]
 }
 
 export default function LeftImageCard({
@@ -25,13 +27,21 @@ export default function LeftImageCard({
                                           imageSrc,
                                           imageAlt = "",
                                           className,
+                                          reverse = false,
+                                          listItems = [],
                                       }: LeftImageCardProps) {
     return (
         <section className={cn('bg-white ', className)}>
             <div
-                className='mx-auto flex max-w-7xl flex-col gap-10 px-6 py-16 lg:grid lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-16'>
+                className={cn(
+                    'mx-auto flex max-w-7xl flex-col gap-10 px-6 py-16 lg:grid lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16',
+                    reverse ? 'lg:flex-row-reverse' : ''
+                )}>
                 <div
-                    className='rounded-[48px] bg-sky-50/80 p-6 shadow-2xl shadow-slate-200/70 ring-1 ring-sky-100/80 sm:p-8'>
+                    className={cn(
+                        'rounded-[48px] bg-sky-50/80 p-6 shadow-2xl shadow-slate-200/70 ring-1 ring-sky-100/80 sm:p-8',
+                        reverse ? 'lg:order-last' : ''
+                    )}>
                     <div className='relative aspect-4/3 h-60 w-full overflow-hidden rounded-[32px] sm:h-80 lg:h-96'>
                         <Image
                             src={imageSrc}
@@ -57,6 +67,13 @@ export default function LeftImageCard({
                             <p key={index}>{paragraph}</p>
                         ))}
                     </div>
+                    {listItems.length > 0 && (
+                        <ul className='mt-6 space-y-2 list-disc list-inside text-slate-500 text-base sm:text-lg'>
+                            {listItems.map((item, index) => (
+                                <li key={index}>{item}</li>
+                            ))}
+                        </ul>
+                    )}
                     {action ? (
                         <a
                             className='mt-10 inline-flex text-[14px] font-bold text-[#1e293b] underline decoration-2 underline-offset-8 transition hover:text-black'

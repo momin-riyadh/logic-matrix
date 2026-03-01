@@ -2,42 +2,46 @@ import Image from 'next/image';
 import { contactInfo, recentWork } from './landing-data';
 import SectionHeading from './SectionHeading';
 
-export default function RecentWorkSection({ showContactForm = true }: { showContactForm?: boolean }) {
+export default function RecentWorkSection({ showContactForm = true, showPortfolioItems = true }: { showContactForm?: boolean, showPortfolioItems?: boolean }) {
   return (
     <section className='bg-sky-50'>
       <div className='mx-auto max-w-6xl px-6 py-16 md:py-24'>
-        <SectionHeading
-          eyebrow='Portfolio'
-          title='Our Recent Work'
-          description='List of reasons why clients should choose your company, including'
-          descriptionClassName='mx-auto max-w-2xl'
-        />
+        {showPortfolioItems && (
+          <>
+            <SectionHeading
+              eyebrow='Portfolio'
+              title='Our Recent Work'
+              description='List of reasons why clients should choose your company, including'
+              descriptionClassName='mx-auto max-w-2xl'
+            />
 
-        <div className='mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
-          {recentWork.map((item) => (
-            <article className='reveal delay-3 rounded-2xl bg-white shadow-sm shadow-sky-100 ring-1 ring-sky-100' key={item.title}>
-              <div className='relative h-36 w-full overflow-hidden sm:h-40'>
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  fill
-                  sizes='(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'
-                  className='rounded-tl-2xl rounded-tr-2xl object-cover'
-                />
-              </div>
-              <div className='p-4 text-center'>
-                <h3 className='mt-4 text-sm font-semibold text-slate-800'>{item.title}</h3>
-                <p className='mt-2 text-xs text-slate-600'>{item.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+            <div className='mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
+              {recentWork.map((item) => (
+                <article className='reveal delay-3 rounded-2xl bg-white shadow-sm shadow-sky-100 ring-1 ring-sky-100' key={item.title}>
+                  <div className='relative h-36 w-full overflow-hidden sm:h-40'>
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      sizes='(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'
+                      className='rounded-tl-2xl rounded-tr-2xl object-cover'
+                    />
+                  </div>
+                  <div className='p-4 text-center'>
+                    <h3 className='mt-4 text-sm font-semibold text-slate-800'>{item.title}</h3>
+                    <p className='mt-2 text-xs text-slate-600'>{item.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
 
-        <div className='mt-8 text-center'>
-          <a className='text-sm font-semibold text-slate-700 underline decoration-2 underline-offset-8 hover:text-slate-900' href='/portfolio'>
-            Show More
-          </a>
-        </div>
+            <div className='mt-8 text-center'>
+              <a className='text-sm font-semibold text-slate-700 underline decoration-2 underline-offset-8 hover:text-slate-900' href='/portfolio'>
+                Show More
+              </a>
+            </div>
+          </>
+        )}
 
         {showContactForm && (
           <div className='mt-12 rounded-3xl bg-white p-4 shadow-lg shadow-slate-200/60 sm:p-6 lg:p-8'>

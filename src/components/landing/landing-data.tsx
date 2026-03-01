@@ -199,6 +199,37 @@ export type FooterGroup = {
     items: string[];
 };
 
+/**
+ * Service detail item with icon or image
+ * @property title - Item name
+ * @property icon - Optional React SVG icon component
+ * @property imageSrc - Optional path to icon/logo image
+ * @property colorClassName - Optional Tailwind text color class for the icon
+ * @property bgClassName - Optional Tailwind background color class for the icon wrapper
+ */
+export type ServiceDetailItem = {
+    title: string;
+    icon?: ReactNode;
+    imageSrc?: string;
+    colorClassName?: string;
+    bgClassName?: string;
+};
+
+/**
+ * Service category section data
+ * @property id - Unique section ID for navigation
+ * @property title - Section heading
+ * @property description - Section summary
+ * @property items - Array of service detail items
+ */
+export type ServiceCategoryData = {
+    id: string;
+    title: string;
+    eyebrow?: string;
+    description?: string;
+    items: ServiceDetailItem[];
+};
+
 // ============================================
 // DATA EXPORTS
 // ============================================
@@ -221,12 +252,235 @@ export const navLinks: NavLink[] = [
     },
     {
         label: 'Services',
-        href: '#'
+        href: '/services'
     },
     {label: 'Portfolio', href: '/portfolio'},
     {label: 'Blog', href: '/blog'},
-    {label: 'Career', href: '#'},
+    {label: 'Career', href: '/career'},
 ];
+
+/**
+ * Service Page Content Sections
+ */
+export const softwareDesignServices: ServiceCategoryData = {
+    id: 'software-design',
+    title: 'Software Designing and Development Services',
+    eyebrow: 'DEVELOPMENT',
+    description: 'Empirical Edge Inc. assists businesses in expansion through the development of custom websites, software, and mobile apps designed to scale alongside the business and function seamlessly across all devices.',
+    items: [
+        {
+            title: '.NET Development',
+            imageSrc: '/logicmatrix/services/software-design-development/.net.svg',
+            bgClassName: 'bg-sky-600',
+            colorClassName: 'text-white'
+        },
+        {
+            title: 'PHP Development',
+            imageSrc: '/logicmatrix/services/software-design-development/php.svg',
+            bgClassName: 'bg-[#777BB4]',
+            colorClassName: 'text-white'
+        },
+        {
+            title: 'Java Development',
+            imageSrc: '/logicmatrix/services/software-design-development/java.svg',
+            bgClassName: 'bg-[#E76F00]',
+            colorClassName: 'text-white'
+        },
+        {
+            title: 'Python Development',
+            imageSrc: '/logicmatrix/services/software-design-development/python.svg',
+            bgClassName: 'bg-[#3776AB]',
+            colorClassName: 'text-white'
+        },
+        {
+            title: 'Angular Development',
+            imageSrc: '/logicmatrix/services/software-design-development/angular.svg',
+            bgClassName: 'bg-[#DD0031]',
+            colorClassName: 'text-white'
+        },
+        {
+            title: 'Nodejs Development',
+            imageSrc: '/logicmatrix/services/software-design-development/js.svg',
+            bgClassName: 'bg-[#339933]',
+            colorClassName: 'text-white'
+        },
+        {
+            title: 'React Native Development',
+            imageSrc: '/logicmatrix/services/software-design-development/react.svg',
+            bgClassName: 'bg-[#61DAFB]',
+            colorClassName: 'text-white'
+        },
+    ]
+};
+
+export const databaseDevelopmentServices: ServiceCategoryData = {
+    id: 'database-development',
+    title: 'Database Development and Management Services',
+    eyebrow: 'DATABASE',
+    description: 'Empirical Edge Inc. offers comprehensive database management solutions encompassing development, administration, monitoring, replication, and backup services.',
+    items: [
+        {title: 'Microsoft SQL Server Services', imageSrc: '/logicmatrix/services/database/mysql-server.svg', bgClassName: 'bg-[#CC2927]'},
+        {title: 'MySQL Services', imageSrc: '/logicmatrix/services/database/mysql-service.svg', bgClassName: 'bg-[#4479A1]'},
+        {title: 'Oracle Database Development', imageSrc: '/logicmatrix/services/database/oracle.svg', bgClassName: 'bg-[#F80000]'},
+        {title: 'Crystal Reports Development', imageSrc: '/logicmatrix/services/database/crystal.svg', bgClassName: 'bg-[#0072C6]'},
+        {title: 'MongoDB Database', imageSrc: '/logicmatrix/services/database/mongodb.svg', bgClassName: 'bg-[#47A248]'},
+        {title: 'Database Administration', imageSrc: '/logicmatrix/services/database/database.svg', bgClassName: 'bg-[#91219E]'},
+        {title: 'Database Backup Services', imageSrc: '/logicmatrix/services/database/database-backup.svg', bgClassName: 'bg-[#F29111]'},
+        {title: 'Database Management Services', imageSrc: '/logicmatrix/services/database/database-management.svg', bgClassName: 'bg-[#00758F]'},
+        {title: 'Database Replication', imageSrc: '/logicmatrix/services/database/database-replication.svg', bgClassName: 'bg-[#00758F]'},
+        {title: 'Database Migration Services', imageSrc: '/logicmatrix/services/database/database-migration.svg', bgClassName: 'bg-[#91219E]'},
+        {title: 'Master Data Management', imageSrc: '/logicmatrix/services/database/master-data.svg', bgClassName: 'bg-[#CC2927]'},
+        {title: 'Reporting Services', imageSrc: '/logicmatrix/services/database/reporting-service.svg', bgClassName: 'bg-[#4479A1]'},
+    ]
+};
+
+export const ecommerceDevelopmentServices: ServiceCategoryData = {
+    id: 'ecommerce-development',
+    title: 'eCommerce Development Services',
+    description: 'We specialize in designing and developing online shopping websites capable of handling high traffic and delivering a seamless user experience.',
+    items: [
+        {title: 'WooCommerce Development', imageSrc: '/logicmatrix/services/ecommerce/woo-commerce.svg', bgClassName: 'bg-[#96588A]'},
+        {title: 'Shopify Development', imageSrc: '/logicmatrix/services/ecommerce/shopify.svg', bgClassName: 'bg-[#95BF47]'},
+        {title: 'Magento Development', imageSrc: '/logicmatrix/services/ecommerce/magento.svg', bgClassName: 'bg-[#F46F25]'},
+        {title: 'nopCommerce Development', imageSrc: '/logicmatrix/services/ecommerce/nopcommerce.svg', bgClassName: 'bg-[#22A7F0]'},
+        {title: 'AbleCommerce Development', imageSrc: '/logicmatrix/services/ecommerce/ablecommerce.svg', bgClassName: 'bg-[#555E7B]'},
+        {title: 'PrestaShop Development', imageSrc: '/logicmatrix/services/ecommerce/prestashop.svg', bgClassName: 'bg-[#DF0067]'},
+        {title: 'BigCommerce Development', imageSrc: '/logicmatrix/services/ecommerce/bigcommerce.svg', bgClassName: 'bg-[#333333]'},
+        {title: 'OpenCart Development', imageSrc: '/logicmatrix/services/ecommerce/opencart.svg', bgClassName: 'bg-[#24A1DE]'},
+        {title: 'X-Cart Development', imageSrc: '/logicmatrix/services/ecommerce/x-cart.svg', bgClassName: 'bg-[#F29111]'},
+        {title: 'OsCommerce Development', imageSrc: '/logicmatrix/services/ecommerce/oscommerce.svg', bgClassName: 'bg-[#4B8411]'},
+        {title: 'Asp .Net Storefront Development', imageSrc: '/logicmatrix/services/ecommerce/aspnet.svg', bgClassName: 'bg-[#004A99]'},
+        {title: 'Zen Cart Development', imageSrc: '/logicmatrix/services/ecommerce/zen-cart.svg', bgClassName: 'bg-[#F29111]'},
+    ]
+};
+
+export const mobileAppServices: ServiceCategoryData = {
+    id: 'mobile-app',
+    title: 'Mobile App Development Services',
+    description: 'Our team is equipped to support every stage of custom mobile app development, from creating a basic version to a fully functional application.',
+    items: [
+        {title: 'React Native App Development', imageSrc: '/logicmatrix/services/mobile-apps/react-native.svg', bgClassName: 'bg-[#61DAFB]'},
+        {title: 'iOS App Development', imageSrc: '/logicmatrix/services/mobile-apps/ios.svg', bgClassName: 'bg-[#000000]'},
+        {title: 'Android App Development', imageSrc: '/logicmatrix/services/mobile-apps/android.svg', bgClassName: 'bg-[#A4C639]'},
+        {title: 'Windows App Development', imageSrc: '/logicmatrix/services/mobile-apps/windows.svg', bgClassName: 'bg-[#0078D7]'},
+        {title: 'Hybrid App Development', imageSrc: '/logicmatrix/services/mobile-apps/hybrid-app.svg', bgClassName: 'bg-[#24A1DE]'},
+        {title: 'PrestaShop Development', imageSrc: '/logicmatrix/services/mobile-apps/prestashop.svg', bgClassName: 'bg-[#F46F25]'},
+        {title: 'Cross Platform App Development', imageSrc: '/logicmatrix/services/mobile-apps/cross-platform.svg', bgClassName: 'bg-[#213342]'},
+    ]
+};
+
+export const techExpertiseServices: ServiceCategoryData = {
+    id: 'tech-expertise',
+    title: 'Software Technologies Expertise',
+    description: 'We specialize in designing and developing online shopping websites capable of handling high traffic and delivering a seamless user experience.',
+    items: [
+        {title: '.NET Core Development', imageSrc: '/logicmatrix/services/software-technologies/net-core.svg', bgClassName: 'bg-[#512BD4]'},
+        {title: 'ASP.NET', imageSrc: '/logicmatrix/services/software-technologies/aspnet.svg', bgClassName: 'bg-[#0078D7]'},
+        {title: 'Classic ASP Development', imageSrc: '/logicmatrix/services/software-technologies/classic-asp.svg', bgClassName: 'bg-[#00897B]'},
+        {title: 'React JS', imageSrc: '/logicmatrix/services/software-technologies/react-js.svg', bgClassName: 'bg-[#20232A]'},
+        {title: 'VueJS Development', imageSrc: '/logicmatrix/services/software-technologies/vuejs.svg', bgClassName: 'bg-[#4FC08D]'},
+        {title: 'WCF Development', imageSrc: '/logicmatrix/services/software-technologies/wcf.svg', bgClassName: 'bg-[#9B9B9B]'},
+        {title: 'VB.NET Development', imageSrc: '/logicmatrix/services/software-technologies/vbnet.svg', bgClassName: 'bg-[#003399]'},
+        {title: 'Ajax Development', imageSrc: '/logicmatrix/services/software-technologies/ajax.svg', bgClassName: 'bg-[#003366]'},
+        {title: 'Laravel Development', imageSrc: '/logicmatrix/services/software-technologies/laravel.svg', bgClassName: 'bg-[#FF2D20]'},
+        {title: 'Core PHP', imageSrc: '/logicmatrix/services/software-technologies/core-php.svg', bgClassName: 'bg-[#777BB4]'},
+        {title: 'C# Application', imageSrc: '/logicmatrix/services/software-technologies/c#-application.svg', bgClassName: 'bg-[#239120]'},
+        {title: 'Smarty Development', imageSrc: '/logicmatrix/services/software-technologies/smarty.svg', bgClassName: 'bg-[#FFD43B]'},
+        {title: 'Slim PHP', imageSrc: '/logicmatrix/services/software-technologies/slim-php.svg', bgClassName: 'bg-[#68A063]'},
+        {title: 'Symfony Development', imageSrc: '/logicmatrix/services/software-technologies/symfony.svg', bgClassName: 'bg-[#000000]'},
+        {title: 'Zend Development', imageSrc: '/logicmatrix/services/software-technologies/zend.svg', bgClassName: 'bg-[#68B030]'},
+        {title: 'Yii Development', imageSrc: '/logicmatrix/services/software-technologies/yii.svg', bgClassName: 'bg-[#008DD1]'},
+        {title: 'CakePHP Development', imageSrc: '/logicmatrix/services/software-technologies/cakephp.svg', bgClassName: 'bg-[#D33C43]'},
+        {title: 'Codeigniter Development', imageSrc: '/logicmatrix/services/software-technologies/codeigniter.svg', bgClassName: 'bg-[#EE4323]'},
+    ]
+};
+
+export const cmsDevelopmentServices: ServiceCategoryData = {
+    id: 'cms-development',
+    title: 'CMS Development Services',
+    description: 'A Content Management System (CMS) is an essential tool for creating powerful websites. It simplifies web development with appealing designs, accessibility, real-time updates, and fresh content.',
+    items: [
+        {title: 'WordPress Development', imageSrc: '/logicmatrix/services/cms-developement/wordpress.svg', bgClassName: 'bg-[#21759B]'},
+        {title: 'Drupal Development', imageSrc: '/logicmatrix/services/cms-developement/drupal.svg', bgClassName: 'bg-[#0077C0]'},
+        {title: 'Joomla Development', imageSrc: '/logicmatrix/services/cms-developement/joomla.svg', bgClassName: 'bg-[#F44336]'},
+        {title: 'Kentico Development', imageSrc: '/logicmatrix/services/cms-developement/kentico.svg', bgClassName: 'bg-[#F05A28]'},
+        {title: 'DNN Development', imageSrc: '/logicmatrix/services/cms-developement/dnn-development.svg', bgClassName: 'bg-[#0072C6]'},
+        {title: 'Ubounce Development', imageSrc: '/logicmatrix/services/cms-developement/ubounce-development.svg', bgClassName: 'bg-[#0096D6]'},
+    ]
+};
+
+export const systemIntegrationServices: ServiceCategoryData = {
+    id: 'system-integration',
+    title: 'System Integration Services',
+    description: 'We facilitate scalable architecture integration and seamless migration of data, including cloud-based data, from one database to another, offering the following services:',
+    items: [
+        {title: 'ERP integration', imageSrc: '/logicmatrix/services/system-integration/erp-integration.svg', bgClassName: 'bg-[#0072C6]'},
+        {title: 'Custom Workflow Development', imageSrc: '/logicmatrix/services/system-integration/custom-workflow.svg', bgClassName: 'bg-[#91219E]'},
+        {title: 'Office 365 Development', imageSrc: '/logicmatrix/services/system-integration/office-365.svg', bgClassName: 'bg-[#2B579A]'},
+        {title: 'SharePoint Development', imageSrc: '/logicmatrix/services/system-integration/sharepoint.svg', bgClassName: 'bg-[#91219E]'},
+        {title: 'System Reporting', imageSrc: '/logicmatrix/services/system-integration/system-reporting.svg', bgClassName: 'bg-[#D14F21]'},
+    ]
+};
+
+export const crmDevelopmentServices: ServiceCategoryData = {
+    id: 'crm-development',
+    title: 'CRM Development Services',
+    description: 'With extensive experience in CRM development, Empirical Edge Inc., enhances business connections and customer relationships through tailored database software solutions.',
+    items: [
+        {title: 'HubSpot Development', imageSrc: '/logicmatrix/services/crm-development/hubspot.svg', bgClassName: 'bg-[#FF7A59]'},
+        {title: 'Salesforce Development', imageSrc: '/logicmatrix/services/crm-development/salesforce.svg', bgClassName: 'bg-[#00A1E0]'},
+        {title: 'SugarCRM Development', imageSrc: '/logicmatrix/services/crm-development/sugarcrm.svg', bgClassName: 'bg-[#333333]'},
+        {title: 'Vtiger CRM Development', imageSrc: '/logicmatrix/services/crm-development/vtiger-crm.svg', bgClassName: 'bg-[#4479A1]'},
+    ]
+};
+
+export const uiuxDesignServices: ServiceCategoryData = {
+    id: 'uiux-design',
+    title: 'UI/UX Designing Services',
+    description: 'At Empirical Edge Inc., we offer innovative UI and UX design services aimed at rapidly creating exceptional products. Our dedicated design team conducts.',
+    items: [
+        {title: 'Logo Design', imageSrc: '/logicmatrix/services/ui-ux/logo.svg', bgClassName: 'bg-[#D14F8E]'},
+        {title: 'Banner Design', imageSrc: '/logicmatrix/services/ui-ux/banner.svg', bgClassName: 'bg-[#D14F21]'},
+        {title: 'Wireframe Design', imageSrc: '/logicmatrix/services/ui-ux/wireframe.svg', bgClassName: 'bg-[#0072C6]'},
+        {title: 'Layout Design', imageSrc: '/logicmatrix/services/ui-ux/layout.svg', bgClassName: 'bg-[#A6A600]'},
+    ]
+};
+
+export const seoServices: ServiceCategoryData = {
+    id: 'seo-services',
+    title: 'Search Engine Optimization Services',
+    description: 'Empirical Edge Inc. excels at enhancing website search engine rankings and increasing traffic. With our technical expertise and skilled writers, we effectively promote complex websites in competitive industries.',
+    items: [
+        {title: 'On-Page SEO', imageSrc: '/logicmatrix/services/seo/on-page-seo.svg', bgClassName: 'bg-[#23337B]'},
+        {title: 'Technical SEO', imageSrc: '/logicmatrix/services/seo/technical-seo.svg', bgClassName: 'bg-[#D14F21]'},
+        {title: 'Off-Page SEO & Link Building', imageSrc: '/logicmatrix/services/seo/off-page-seo-&.svg', bgClassName: 'bg-[#0072C6]'},
+        {title: 'Local SEO', imageSrc: '/logicmatrix/services/seo/local-seo.svg', bgClassName: 'bg-[#4B8411]'},
+        {title: 'SEO Audit & Strategy', imageSrc: '/logicmatrix/services/seo/seo-audit-&.svg', bgClassName: 'bg-[#0072C6]'},
+    ]
+};
+
+export const cloudServicesData: ServiceCategoryData = {
+    id: 'cloud-services',
+    title: 'Cloud Services',
+    description: 'At Empirical Edge, we offer complete, end-to-end cloud services to help businesses scale, optimize, and secure their IT environments.',
+    items: [
+        {title: 'Google Cloud Services', imageSrc: '/logicmatrix/services/cloud-service/rectangle-3414.svg', bgClassName: 'bg-[#333333]'},
+        {title: 'Azure', imageSrc: '/logicmatrix/services/cloud-service/azure.svg', bgClassName: 'bg-[#00BCF2]'},
+        {title: 'AWS', imageSrc: '/logicmatrix/services/cloud-service/aws.svg', bgClassName: 'bg-[#FF9900]'},
+        {title: 'Oracle Cloud', imageSrc: '/logicmatrix/services/cloud-service/oracle-cloud.svg', bgClassName: 'bg-[#F80000]'},
+    ]
+};
+
+export const aiMlServices: ServiceCategoryData = {
+    id: 'aiml-services',
+    title: 'AI & Machine Learning',
+    description: 'At Empirical Edge, we provide scalable AI competence that empowers enterprises to take action based on data-deploying adaptable AI systems and frictionless experiences that continually evolve based on you.',
+    items: [
+        {title: 'AI Services', imageSrc: '/logicmatrix/services/ai-ml/al-services.svg', bgClassName: 'bg-[#91219E]'},
+        {title: 'Azure AI', imageSrc: '/logicmatrix/services/ai-ml/azure-al.svg', bgClassName: 'bg-[#333333]'},
+        {title: 'AI/ML Solutions', imageSrc: '/logicmatrix/services/ai-ml/ai_ml-solutions.svg', bgClassName: 'bg-[#91219E]'},
+    ]
+};
 
 /**
  * Company statistics/achievements
