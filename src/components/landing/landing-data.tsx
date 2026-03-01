@@ -384,7 +384,7 @@ export const techExpertiseServices: ServiceCategoryData = {
         {title: 'Ajax Development', imageSrc: '/logicmatrix/services/software-technologies/ajax.svg', bgClassName: 'bg-[#003366]'},
         {title: 'Laravel Development', imageSrc: '/logicmatrix/services/software-technologies/laravel.svg', bgClassName: 'bg-[#FF2D20]'},
         {title: 'Core PHP', imageSrc: '/logicmatrix/services/software-technologies/core-php.svg', bgClassName: 'bg-[#777BB4]'},
-        {title: 'C# Application', imageSrc: '/logicmatrix/services/software-technologies/c#-application.svg', bgClassName: 'bg-[#239120]'},
+        {title: 'C# Application', imageSrc: '/logicmatrix/services/software-technologies/c-application.svg', bgClassName: 'bg-[#239120]'},
         {title: 'Smarty Development', imageSrc: '/logicmatrix/services/software-technologies/smarty.svg', bgClassName: 'bg-[#FFD43B]'},
         {title: 'Slim PHP', imageSrc: '/logicmatrix/services/software-technologies/slim-php.svg', bgClassName: 'bg-[#68A063]'},
         {title: 'Symfony Development', imageSrc: '/logicmatrix/services/software-technologies/symfony.svg', bgClassName: 'bg-[#000000]'},
