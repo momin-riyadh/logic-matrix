@@ -37,33 +37,33 @@ export default function ServicesPage() {
                 backgroundSrc='/logicmatrix/aboutus_hero_bg.png'
             />
 
-            <ServiceGridSection data={softwareDesignServices} />
+            <ServiceGridSection data={softwareDesignServices}/>
 
-            <DevOpsToolsSection />
+            <DevOpsToolsSection/>
 
-            <DevSecOpsToolsSection />
+            <DevSecOpsToolsSection/>
 
-            <ServiceGridSection data={databaseDevelopmentServices} className="bg-slate-50/50" />
+            <ServiceGridSection data={databaseDevelopmentServices} className="bg-slate-50/50"/>
 
-            <ServiceGridSection data={ecommerceDevelopmentServices} />
+            <ServiceGridSection data={ecommerceDevelopmentServices}/>
 
-            <ServiceGridSection data={mobileAppServices} className="bg-slate-50/50" />
+            <ServiceGridSection data={mobileAppServices} className="bg-slate-50/50"/>
 
-            <ServiceGridSection data={techExpertiseServices} />
+            <ServiceGridSection data={techExpertiseServices}/>
 
-            <ServiceGridSection data={cmsDevelopmentServices} className="bg-slate-50/50" />
+            <ServiceGridSection data={cmsDevelopmentServices} className="bg-slate-50/50"/>
 
-            <ServiceGridSection data={systemIntegrationServices} />
+            <ServiceGridSection data={systemIntegrationServices}/>
 
-            <ServiceGridSection data={crmDevelopmentServices} className="bg-slate-50/50" />
+            <ServiceGridSection data={crmDevelopmentServices} className="bg-slate-50/50"/>
 
-            <ServiceGridSection data={uiuxDesignServices} />
+            <ServiceGridSection data={uiuxDesignServices}/>
 
-            <ServiceGridSection data={seoServices} className="bg-slate-50/50" />
+            <ServiceGridSection data={seoServices} className="bg-slate-50/50"/>
 
-            <ServiceGridSection data={cloudServicesData} />
+            <ServiceGridSection data={cloudServicesData}/>
 
-            <ServiceGridSection data={aiMlServices} className="bg-slate-50/50" />
+            <ServiceGridSection data={aiMlServices} className="bg-slate-50/50"/>
 
             <section className="py-20 bg-white">
                 <div className="container mx-auto px-6 text-center">
