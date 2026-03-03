@@ -550,7 +550,7 @@ export const techExpertiseServices: ServiceCategoryData = {
         },
         {
             title: 'C# Application',
-            imageSrc: '/logicmatrix/services/software-technologies/c#-application.svg',
+            imageSrc: '/logicmatrix/services/software-technologies/c-sharp-application.svg',
             bgClassName: 'bg-[#239120]'
         },
         {
