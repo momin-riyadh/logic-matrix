@@ -10,7 +10,7 @@ export default function Header() {
 
     return (
         <header className='shadow-sm'>
-            <div className='flex w-full max-w-375 justify-self-end rounded-none rounded-bl-full bg-sky-600'>
+            <div className='flex w-full max-w-375 justify-self-end rounded-none rounded-bl-full bg-primary'>
                 <div className='mx-auto mr-[17%] w-full max-w-[75%] text-white'>
                     <div className='mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-2'>
                         <div className='flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium'>
@@ -108,12 +108,12 @@ export default function Header() {
                     </nav>
 
                     <div className='flex items-center gap-3'>
-                        <button
-                            className='inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 hover:bg-blue-700'
-                            type='button'
+                        <Link
+                            href="/contact-us"
+                            className='inline-flex items-center justify-center rounded-sm bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90'
                         >
                             Contact Us
-                        </button>
+                        </Link>
                         <button
                             className='inline-flex items-center justify-center rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 lg:hidden'
                             type='button'

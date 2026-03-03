@@ -83,7 +83,7 @@ export default function RecentWorkSection({ showContactForm = true, showPortfoli
                 <label className='text-xs font-semibold text-slate-600'>
                   Subject
                   <input
-                    className='mt-2 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500'
+                    className='mt-2 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary'
                     type='text'
                     placeholder='What type of project are you interested in ?'
                   />
@@ -91,13 +91,13 @@ export default function RecentWorkSection({ showContactForm = true, showPortfoli
                 <label className='text-xs font-semibold text-slate-600'>
                   Message
                   <textarea
-                    className='mt-2 min-h-[120px] w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500'
+                    className='mt-2 min-h-30 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary'
                     placeholder='Write your message here'
                   ></textarea>
                 </label>
                 <div>
                   <button
-                    className='inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-md shadow-blue-600/25 hover:bg-blue-700'
+                    className='inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/25 hover:bg-primary/90'
                     type='submit'
                   >
                     Send Massage

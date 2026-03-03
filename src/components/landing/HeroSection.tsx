@@ -43,7 +43,7 @@ export default function HeroSection({
         </p>
         <div className='reveal delay-3 mt-8 flex flex-wrap items-center justify-center gap-6'>
           <a
-            className='inline-flex items-center justify-center rounded-lg bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-700'
+            className='inline-flex items-center justify-center rounded-lg bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition hover:bg-primary/90'
             href={primaryAction.href}
           >
             {primaryAction.label}

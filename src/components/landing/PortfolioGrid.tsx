@@ -14,21 +14,21 @@ type PortfolioGridProps = {
 export default function PortfolioGrid({ title, items, gridCols = 3 }: PortfolioGridProps) {
   // Determine grid columns based on props
   const gridClassName = gridCols === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3';
-  
+
   return (
     <section className='bg-white py-12'>
       <div className='mx-auto max-w-7xl px-6'>
         {/* Section Header */}
         <div className='flex items-center justify-between mb-8'>
           <h2 className='text-2xl font-bold text-slate-800'>{title}</h2>
-          <a href="#" className='text-sm font-semibold text-blue-600 flex items-center gap-1 hover:text-blue-700 transition'>
+          <a href="#" className='text-sm font-semibold text-primary flex items-center gap-1 hover:text-primary/80 transition'>
             View All
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
         </div>
-        
+
         {/* Grid Layout */}
         <div className={`grid gap-10 ${gridClassName}`}>
           {items.map((item, index) => (
@@ -43,7 +43,7 @@ export default function PortfolioGrid({ title, items, gridCols = 3 }: PortfolioG
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
-              
+
               {/* Card Content */}
               <div className='flex flex-col flex-1 p-4'>
                 <div className='flex items-center gap-2 text-orange-400 text-[12px] font-semibold uppercase tracking-wider mb-2'>
@@ -51,7 +51,7 @@ export default function PortfolioGrid({ title, items, gridCols = 3 }: PortfolioG
                   <span className="text-slate-300">—</span>
                   <span>{item.readTime}</span>
                 </div>
-                <h3 className='text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-blue-600 transition'>
+                <h3 className='text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary transition'>
                   {item.title}
                 </h3>
                 <p className='text-slate-500 text-[13px] mb-3 font-medium'>
@@ -61,7 +61,7 @@ export default function PortfolioGrid({ title, items, gridCols = 3 }: PortfolioG
                   {item.description}
                 </p>
                 <div className='mt-auto'>
-                  <a 
+                  <a
                     href={item.href}
                     className='inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50'
                   >

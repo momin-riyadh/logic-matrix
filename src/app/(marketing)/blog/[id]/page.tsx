@@ -30,13 +30,13 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ id
         <div className="mb-12">
           <h1 className="text-3xl md:text-5xl font-bold text-slate-800 mb-6 leading-tight">
             {post.id === '1' ? (
-              <>Plan Your Project with <span className="text-blue-600">Your</span> Software Development Model in Mind</>
+              <>Plan Your Project with <span className="text-primary">Your</span> Software Development Model in Mind</>
             ) : post.title}
           </h1>
-          
+
           <div className="flex flex-wrap items-center gap-4 mb-6">
             {post.tags?.map((tag) => (
-              <span key={tag} className="px-3 py-1 bg-sky-50 text-blue-600 text-xs font-semibold rounded-md border border-sky-100">
+              <span key={tag} className="px-3 py-1 bg-primary/5 text-primary text-xs font-semibold rounded-md border border-primary/10">
                 {tag}
               </span>
             ))}
@@ -60,7 +60,7 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ id
           {post.sections ? (
             post.sections.map((section, index) => (
               <div key={index} className="space-y-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-blue-600">
+                <h2 className="text-2xl md:text-3xl font-bold text-primary">
                   {section.title}
                 </h2>
                 <div className="whitespace-pre-wrap">
@@ -85,7 +85,7 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ id
               </p>
               <p>
                 Detailed content for &quot;{post.title}&quot; is currently being prepared.
-                Our team is working hard to bring you the most relevant and up-to-date information 
+                Our team is working hard to bring you the most relevant and up-to-date information
                 regarding this topic. Please stay tuned for updates.
               </p>
             </div>

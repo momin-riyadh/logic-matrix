@@ -22,6 +22,7 @@
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
   --color-brand: #0b78be;
+  --color-primary: #0b78be;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -32,9 +33,9 @@
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-foreground: #ffffff;
+  --color-brand-foreground: #ffffff;
+  --color-ring: var(--ring);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);

@@ -37,7 +37,7 @@ export default function BlogFilters() {
                       setIsCategoryOpen(false);
                     }}
                     className={`w-full text-left px-4 py-2 hover:bg-slate-50 transition-colors ${
-                      selectedCategory === category ? 'text-blue-600 font-semibold' : 'text-slate-600'
+                      selectedCategory === category ? 'text-primary font-semibold' : 'text-slate-600'
                     }`}
                   >
                     {category}
@@ -75,8 +75,8 @@ export default function BlogFilters() {
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-1.5 rounded-md text-xs font-medium transition-all ${
                 selectedCategory === category
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-blue-600 border border-blue-200 hover:border-blue-400'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-white text-primary border border-primary/20 hover:border-primary/40'
               }`}
             >
               {category}

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { testimonials, TestimonialItem } from "./landing-data";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {testimonials, TestimonialItem} from "./landing-data";
 
 /* ─── Constants ─────────────────────────────────── */
 const TOTAL = testimonials.length;
@@ -34,7 +34,7 @@ function StarRow() {
         <div className="flex gap-1">
             {[0, 1, 2, 3, 4].map((i) => (
                 <svg key={i} className="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d={STAR_PATH} />
+                    <path d={STAR_PATH}/>
                 </svg>
             ))}
         </div>
@@ -42,10 +42,10 @@ function StarRow() {
 }
 
 /* ─── Single Testimonial Card ────────────────────── */
-function Card({ t, delay }: { t: TestimonialItem; delay: number }) {
+function Card({t, delay}: { t: TestimonialItem; delay: number }) {
     return (
         <div
-            className="bg-white rounded-[20px] border border-[#daeeff] p-6 flex flex-col gap-3 min-w-0 animate-[cardIn_0.38s_ease-out_both]"
+            className="bg-white rounded-4xl border border-[#daeeff] p-6 flex flex-col gap-3 min-w-0 animate-[cardIn_0.38s_ease-out_both]"
             style={{
                 boxShadow: "0 4px 16px rgba(0,0,0,0.05)",
                 animationDelay: `${delay}ms`,
@@ -53,7 +53,7 @@ function Card({ t, delay }: { t: TestimonialItem; delay: number }) {
         >
             <p className="text-[15px] font-bold text-slate-900 m-0">{t.title}</p>
             <p className="text-[13px] text-slate-500 leading-7 flex-1 m-0">{t.quote}</p>
-            <div className="flex items-center gap-[10px] pt-3 border-t border-slate-100 mt-auto">
+            <div className="flex items-center gap-2.5 pt-3 border-t border-slate-100 mt-auto">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     src={t.avatar}
@@ -61,11 +61,11 @@ function Card({ t, delay }: { t: TestimonialItem; delay: number }) {
                     width={38}
                     height={38}
                     loading="lazy"
-                    className="w-[38px] h-[38px] rounded-full object-cover border-2 border-sky-200 flex-shrink-0"
+                    className="w-9.5 h-9.5 rounded-full object-cover border-2 border-sky-200 shrink-0"
                 />
                 <div>
                     <p className="text-[13px] font-bold text-slate-800 m-0">{t.name}</p>
-                    <p className="text-[11px] text-slate-400 mt-[2px] mb-0">{t.role}</p>
+                    <p className="text-[11px] text-slate-400 mt-0.5 mb-0">{t.role}</p>
                 </div>
             </div>
         </div>
@@ -73,13 +73,13 @@ function Card({ t, delay }: { t: TestimonialItem; delay: number }) {
 }
 
 /* ─── Arrow Button ───────────────────────────────── */
-function Arrow({ side, onClick }: { side: "left" | "right"; onClick: () => void }) {
+function Arrow({side, onClick}: { side: "left" | "right"; onClick: () => void }) {
     return (
         <button
             onClick={onClick}
             aria-label={side === "left" ? "Previous" : "Next"}
-            className={`absolute top-1/2 -translate-y-1/2 z-20 w-[38px] h-[38px] rounded-full bg-white border-[1.5px] border-[#daeeff] shadow-[0_2px_10px_rgba(0,0,0,0.10)] flex items-center justify-center cursor-pointer text-slate-500 transition-all p-0 hover:text-sky-400 hover:border-sky-300 hover:scale-110 ${
-                side === "left" ? "-left-[19px]" : "-right-[19px]"
+            className={`absolute top-1/2 -translate-y-1/2 z-20 w-9.5 h-9.5 rounded-full bg-white border-[1.5px] border-[#daeeff] shadow-[0_2px_10px_rgba(0,0,0,0.10)] flex items-center justify-center cursor-pointer text-slate-500 transition-all p-0 hover:text-sky-400 hover:border-sky-300 hover:scale-110 ${
+                side === "left" ? "-left-4.75" : "-right-4.75"
             }`}
         >
             <svg width={15} height={15} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -163,8 +163,8 @@ export default function TestimonialsSlider() {
     }, []);
 
     /* -- current window of visible cards -------------- */
-    const slides = isMounted 
-        ? Array.from({ length: cols }, (_, i) => testimonials[wrap(current + i)])
+    const slides = isMounted
+        ? Array.from({length: cols}, (_, i) => testimonials[wrap(current + i)])
         : [];
 
     if (!isMounted) return null;
@@ -182,21 +182,22 @@ export default function TestimonialsSlider() {
             <section className="w-full py-16 px-8 font-inherit">
                 {/* ── Row: Rating + Slider ── */}
                 <div
-                    className="max-w-[1100px] mx-auto flex flex-col md:flex-row gap-5 items-stretch"
+                    className="max-w-275 mx-auto flex flex-col md:flex-row gap-5 items-stretch"
                 >
                     {/* ── Fixed Rating Card ── */}
                     <div
-                        className="flex-shrink-0 w-full md:w-[210px] bg-white rounded-[20px] border border-[#daeeff] shadow-[0_4px_20px_rgba(56,189,248,0.08)] flex flex-row md:flex-col items-center justify-center gap-5 md:gap-3.5 p-5 md:py-9 md:px-5"
-                        style={{ height: ratingH }}
+                        className="shrink-0 w-full md:w-52.5 bg-white rounded-4xl border border-[#daeeff] shadow-[0_4px_20px_rgba(56,189,248,0.08)] flex flex-row md:flex-col items-center justify-center gap-5 md:gap-3.5 p-5 md:py-9 md:px-5"
+                        style={{height: ratingH}}
                     >
-                        <span className="text-[clamp(48px,5.5vw,64px)] font-black text-slate-900 leading-none tracking-[-4px]">
+                        <span
+                            className="text-[clamp(48px,5.5vw,64px)] font-black text-slate-900 leading-none tracking-[-4px]">
                             4.9
                         </span>
                         <div className="flex flex-col items-center gap-2">
-                            <StarRow />
+                            <StarRow/>
                             <div className="text-center">
                                 <p className="text-[15px] font-extrabold text-slate-800 m-0">483+</p>
-                                <p className="text-[12px] text-slate-400 mt-[3px] mb-0">Positive Reviews</p>
+                                <p className="text-[12px] text-slate-400 mt-0.75 mb-0">Positive Reviews</p>
                             </div>
                         </div>
                     </div>
@@ -208,7 +209,7 @@ export default function TestimonialsSlider() {
                         onMouseLeave={() => (pausedRef.current = false)}
                     >
                         {/* overflow clip */}
-                        <div className="overflow-hidden rounded-[20px]">
+                        <div className="overflow-hidden rounded-4xl">
                             {/* track — CSS grid, always renders cards */}
                             <div
                                 ref={trackRef}
@@ -220,13 +221,13 @@ export default function TestimonialsSlider() {
                                 }}
                             >
                                 {slides.map((t, i) => (
-                                    <Card key={`${t.id}-${renderKey}`} t={t} delay={i * 55} />
+                                    <Card key={`${t.id}-${renderKey}`} t={t} delay={i * 55}/>
                                 ))}
                             </div>
                         </div>
 
-                        <Arrow side="left" onClick={goPrev} />
-                        <Arrow side="right" onClick={goNext} />
+                        <Arrow side="left" onClick={goPrev}/>
+                        <Arrow side="right" onClick={goNext}/>
                     </div>
                 </div>
 

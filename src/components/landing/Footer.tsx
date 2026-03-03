@@ -13,6 +13,7 @@ export default function Footer() {
     'Contact',
     'Career',
     'Terms & Conditions',
+    'Privacy Policy',
     'Portfolio',
     'Testimonials',
   ];
@@ -71,7 +72,13 @@ export default function Footer() {
                 <li key={item}>
                   <a
                     className='transition hover:text-white'
-                    href={item === 'Terms & Conditions' ? '/terms-and-conditions' : '#'}
+                    href={
+                      item === 'Terms & Conditions'
+                        ? '/terms-and-conditions'
+                        : item === 'Privacy Policy'
+                        ? '/privacy-policy'
+                        : '#'
+                    }
                   >
                     {item}
                   </a>

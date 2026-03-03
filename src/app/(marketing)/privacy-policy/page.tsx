@@ -1,60 +1,61 @@
 import Image from 'next/image';
 import ContactSection from '@/components/landing/ContactSection';
 
-export default function TermsAndConditionsPage() {
+export default function PrivacyPolicyPage() {
   const sections = [
     {
       id: 1,
       title: 'Introduction',
       content:
-        'Welcome to Logic Matrix ("Company", "we", "our", or "us"). These Terms and Conditions govern your use of our website and services. By accessing or using our services, you agree to comply with and be bound by these terms.',
+        'Logic Matrix Company we respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.',
     },
     {
       id: 2,
       title: 'Information We Collect',
       content:
-        'We provide software development, DevOps, DevSecOps, and related technology services. All services are subject to written agreements, proposals, or contracts between the Company and the client.',
+        'We may collect personal information such as your name, email address, phone number, company name, and job title when you submit forms on our website. We also collect non-personal data such as IP address, browser type, device information, and usage analytics.',
     },
     {
       id: 3,
-      title: 'Intellectual Property',
+      title: 'How We Use Your Information',
       content:
-        'All website content, including text, graphics, logos, and materials, is the property of Logic Matrix unless otherwise stated. Unauthorized use, reproduction, or distribution is prohibited.',
+        'We use your information to respond to inquiries, provide DevOps and software services, improve our website, ensure security, and comply with legal obligations. We do not sell or rent your personal information.',
     },
     {
       id: 4,
-      title: 'Client Responsibilities',
+      title: 'Cookies And Tracking',
       content:
-        'Clients agree to provide accurate information, timely feedback, and required resources necessary for project completion. Delays caused by the client may affect delivery timelines.',
+        'We use cookies and similar technologies to enhance user experience and analyze website traffic. You may disable cookies in your browser settings.',
     },
     {
       id: 5,
-      title: 'Payment Terms',
+      title: 'Data Security',
       content:
-        'Payment terms, schedules, and pricing are defined in individual service agreements. Failure to make timely payments may result in service suspension.',
+        'We implement appropriate technical and organizational measures to protect your data. However, no internet transmission method is completely secure.',
     },
     {
       id: 6,
-      title: 'Confidentiality',
+      title: 'Third-Party Services',
       content:
-        'Both parties agree to maintain confidentiality of proprietary or sensitive information shared during projects.',
+        'We may use trusted third-party providers such as cloud hosting, analytics, and infrastructure tools. These providers are required to protect your data.',
     },
     {
       id: 7,
-      title: 'Limitation Of Liability',
+      title: 'Data Retention',
       content:
-        'Logic Matrix shall not be liable for indirect, incidental, or consequential damages arising from the use of our services or website.',
+        'We retain personal information only as long as necessary to fulfill business and legal obligations.',
     },
     {
       id: 8,
-      title: 'Termination',
+      title: 'Your Rights',
       content:
-        'We reserve the right to terminate or suspend services if terms are violated or misuse is detected.',
+        'You may request access, correction, or deletion of your personal data, subject to applicable laws.',
     },
     {
       id: 9,
-      title: 'Governing Law',
-      content: 'These Terms shall be governed by and interpreted in accordance with the laws.',
+      title: 'Changes To This Policy',
+      content:
+        'We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised date',
     },
   ];
 
@@ -76,7 +77,7 @@ export default function TermsAndConditionsPage() {
         </div>
         <div className='relative mx-auto flex min-h-[60vh] max-w-5xl flex-col items-center justify-center px-6 py-16 text-center'>
           <h1 className='text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl'>
-            Terms & Conditions
+            Privacy Policy
           </h1>
           <p className='mt-6 text-lg leading-8 text-slate-600 max-w-2xl'>
             Explore our recent Web, eCommerce and Mobile app projects

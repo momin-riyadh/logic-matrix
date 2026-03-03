@@ -375,7 +375,7 @@ export default function AboutPage() {
                     <div className='mt-16 flex flex-col items-center justify-center gap-8 sm:flex-row '>
                         <a
                             href='/contact'
-                            className='rounded-lg bg-[#3b82f6] px-10 py-3 text-xl font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-blue-600 active:scale-95'
+                            className='rounded-lg bg-primary px-10 py-3 text-xl font-bold text-primary-foreground shadow-lg transition-all hover:scale-105 hover:bg-primary/90 active:scale-95'
                         >
                             Hire Us
                         </a>
