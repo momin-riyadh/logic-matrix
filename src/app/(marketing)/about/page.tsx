@@ -331,7 +331,7 @@ export default function AboutPage() {
             </section>
 
 
-      {/*Executive Profiles*/}
+            {/*Executive Profiles*/}
             <section className="bg-white pb-10">
                 <div className='mx-auto max-w-7xl px-6 lg:px-8'>
                     <div className='bg-[#f0f9ff] rounded-4xl p-8 shadow-sm'>
