@@ -12,6 +12,7 @@ type HeroSectionProps = {
   primaryAction?: HeroAction;
   secondaryAction?: HeroAction;
   backgroundSrc?: string;
+  heightVariant?: 'default' | 'compact';
 };
 
 export default function HeroSection({
@@ -21,15 +22,23 @@ export default function HeroSection({
   primaryAction = { label: 'Hire Us', href: '#' },
   secondaryAction = { label: 'Book a Meeting', href: '#' },
   backgroundSrc = '/logicmatrix/hero-bg.png',
+  heightVariant = 'default',
 }: HeroSectionProps) {
+  const heroHeightClass =
+    heightVariant === 'compact'
+      ? 'min-h-[260px] sm:min-h-[300px] lg:min-h-[350px] py-12'
+      : 'min-h-[70vh] sm:min-h-[75vh] lg:min-h-[80vh] py-16';
+
   return (
     <section className='relative isolate overflow-hidden bg-slate-100'>
       <div className='absolute inset-0'>
         <Image src={backgroundSrc} alt='' fill priority sizes='100vw' className='object-cover object-center' />
         <div className='absolute inset-0 bg-white/30' />
-        <div className='absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-white/90 via-white/30 to-transparent' />
+        <div className='absolute inset-x-0 bottom-0 h-40' />
       </div>
-      <div className='relative mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-16 text-center sm:min-h-[75vh] lg:min-h-[80vh]'>
+      <div
+        className={`relative mx-auto flex max-w-5xl flex-col items-center justify-center px-6 text-center ${heroHeightClass}`}
+      >
         {badge && (
           <span className='reveal inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-slate-600 shadow-sm'>
             {badge}

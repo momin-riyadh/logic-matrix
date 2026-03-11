@@ -157,6 +157,7 @@ export default function AboutPage() {
                 primaryAction={{label: 'Hire Us', href: '/contact'}}
                 secondaryAction={{label: 'Book a Meeting', href: '/contact'}}
                 backgroundSrc='/logicmatrix/aboutus_hero_bg.png'
+                heightVariant="compact"
             />
 
             <LeftImageCard
@@ -279,7 +280,7 @@ export default function AboutPage() {
                                         src={experts[0].image}
                                         alt={experts[0].name}
                                         fill
-                                        className='object-cover'
+                                        className='object-contain'
                                     />
                                 </div>
                                 <div className='flex flex-col justify-center p-8 lg:w-1/2 lg:p-12'>

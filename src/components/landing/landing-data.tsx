@@ -66,6 +66,20 @@ export type ServiceItem = {
 };
 
 /**
+ * Developer role/skill for hiring
+ * @property title - Role name (e.g., "Hire .Net Developers")
+ * @property description - Brief explanation of the role
+ * @property icon - Path to the icon image
+ * @property bgColor - Tailwind background color class
+ */
+export type Developer = {
+    title: string;
+    description: string;
+    icon: string;
+    bgColor: string;
+};
+
+/**
  * DevOps tool/technology item
  * @property name - Tool name
  * @property accentClassName - Optional Tailwind color class for branding
@@ -248,6 +262,7 @@ export const navLinks: NavLink[] = [
             {label: 'Our Approach', href: '/our-approach'},
             {label: 'Industry We Serve             ', href: '/industry-we-serve'},
             {label: 'Design and development Process', href: '/design-and-development'},
+            {label: 'Hire Us', href: '/hire-us'},
         ],
     },
     {
@@ -270,7 +285,7 @@ export const softwareDesignServices: ServiceCategoryData = {
     items: [
         {
             title: '.NET Development',
-            imageSrc: '/logicmatrix/services/software-design-development/.net.svg',
+            imageSrc: '/logicmatrix/services/software-design-development/dotnet.svg',
             bgClassName: 'bg-sky-600',
             colorClassName: 'text-white'
         },
@@ -1760,4 +1775,130 @@ export const popularProjects: PortfolioItem[] = [
         image: '/logicmatrix/recent-work-1.png',
         href: '#',
     },
+];
+
+/**
+ * Developers data for Hire Us page
+ */
+export const hireUsDevelopers: Developer[] = [
+    {
+        title: 'Hire .Net Developers',
+        description: 'Unlock the potential of your projects by hiring our skilled .NET developers, who deliver robust and innovative software solutions with precision',
+        icon: '/logicmatrix/tech/hire-net-developers.svg',
+        bgColor: 'bg-indigo-50/50',
+    },
+    {
+        title: 'Remote PHP Developers',
+        description: 'Boost your online presence with remote PHP developers, leveraging their expertise to create dynamic and scalable web solutions.',
+        icon: '/logicmatrix/tech/remote-php-developers.svg',
+        bgColor: 'bg-green-50/50',
+    },
+    {
+        title: 'Hire Mobile App Developers',
+        description: 'Elevate your app to new heights with our mobile app developers (iOS, Android, React Native, Cross-platform) skilled at transforming dreams',
+        icon: '/logicmatrix/tech/hire-mobile.svg',
+        bgColor: 'bg-teal-50/50',
+    },
+    {
+        title: 'Hire eCommerce Developers',
+        description: 'Boost your sales with expert eCommerce developers. From storefronts to back-end systems, get customized solutions. Hire our offshore eCommerce experts today!',
+        icon: '/logicmatrix/tech/hire-ecommerce-developers.svg',
+        bgColor: 'bg-orange-50/50',
+    },
+    {
+        title: 'Hire Android Developers',
+        description: 'Turn your app concepts into reality with our top Android developers, ensuring exceptional quality and timely delivery of your mobile application',
+        icon: '/logicmatrix/tech/hire-android.svg',
+        bgColor: 'bg-blue-50/50',
+    },
+    {
+        title: 'Hire Salesforce Programmer',
+        description: 'Maximize your CRM potential with skilled Salesforce programmers. We specialize in custom integrations, advanced APEX development, lightning web components, and efficient',
+        icon: '/logicmatrix/tech/hire-salesforce.svg',
+        bgColor: 'bg-indigo-100/30',
+    },
+    {
+        title: 'IOS Developers',
+        description: 'Unlock unmatched web development expertise with our exceptional Node.js developers ready to serve you!',
+        icon: '/logicmatrix/tech/ios-developers.svg',
+        bgColor: 'bg-green-100/20',
+    },
+    {
+        title: 'Hire Js Developers',
+        description: 'Unlock the potential of your projects by hiring our skilled .NET developers, who deliver robust and innovative software solutions with precision',
+        icon: '/logicmatrix/tech/hire-js-developers.svg',
+        bgColor: 'bg-orange-100/30',
+    },
+    {
+        title: 'Remote DevOps Engineer',
+        description: 'Enhance your operations with experienced remote DevOps engineers who architect seamless workflows, streamline deployments, and optimize performance for your digital',
+        icon: '/logicmatrix/tech/remote-devops-engineer.svg',
+        bgColor: 'bg-green-50',
+    },
+    {
+        title: 'Hire React Native Developers',
+        description: 'Transform your global cross-platform application development. Engage React Native developers celebrated for their expertise in crafting high-performance',
+        icon: '/logicmatrix/tech/hire-react-native.svg',
+        bgColor: 'bg-red-50/50',
+    },
+    {
+        title: 'Hire Angular Developer',
+        description: 'Hire our offshore Angular developers recognized for their innovative approach and dedication to delivering excellence in every web project, leveraging JavaScript/TypeScript.',
+        icon: '/logicmatrix/tech/hire-angular-developer.svg',
+        bgColor: 'bg-red-100/30',
+    },
+    {
+        title: 'Hire React JS Developers',
+        description: 'Engage our React.js developers renowned for their expertise in JavaScript/TypeScript, crafting dynamic and engaging user interfaces with precision.',
+        icon: '/logicmatrix/tech/hire-react-js-developers.svg',
+        bgColor: 'bg-indigo-50',
+    },
+    {
+        title: 'Hire UI UX Designer',
+        description: 'Enhance your software/application\'s user experience with our skilled UI/UX designers. We create intuitive and visually appealing designs that boost user engagement and satisfaction.',
+        icon: '/logicmatrix/tech/hire-ui-ux-designer.svg',
+        bgColor: 'bg-pink-50',
+    },
+    {
+        title: 'Hire Remote QA Engineer',
+        description: 'Enhance your quality assurance and testing strategies with our experienced remote QA engineers. We specialize in rigorous, testing protocols to ensure the integrity of your software',
+        icon: '/logicmatrix/tech/hire-remote-qa-engineer.svg',
+        bgColor: 'bg-indigo-50/50',
+    },
+    {
+        title: 'Hire CRM Developers',
+        description: 'Improve your business efficiency with our experienced CRM developers. They seamlessly integrate into your team to enhance customer engagement and streamline operations',
+        icon: '/logicmatrix/tech/hire-crm-developers.svg',
+        bgColor: 'bg-blue-50',
+    },
+    {
+        title: 'Hire ERP Consultants',
+        description: 'Optimize your operations with our expert ERP consultants. We provide tailored solutions to streamline business workflows, minimize systems, boost productivity, and drive success',
+        icon: '/logicmatrix/tech/hire-erp-consultants.svg',
+        bgColor: 'bg-green-50/50',
+    },
+    {
+        title: 'Hire Azure Developers',
+        description: 'Enhance your cloud operations with our skilled Azure developers. We specialize in creating digital solutions that improve efficiency and ensure strong data security on Microsoft',
+        icon: '/logicmatrix/tech/azure.svg',
+        bgColor: 'bg-slate-50',
+    },
+    {
+        title: 'Hire AWS Developers',
+        description: 'Enhance your cloud operations with our skilled Azure developers. We specialize in creating digital solutions that improve efficiency and ensure strong data security on Microsoft',
+        icon: '/logicmatrix/tech/aws.svg',
+        bgColor: 'bg-orange-50/50',
+    },
+    {
+        title: 'Hire GCP Developer',
+        description: 'Enhance your cloud operations with our skilled Azure developers. We specialize in creating digital solutions that improve efficiency and ensure strong data security on Microsoft',
+        icon: '/logicmatrix/tech/gcp.svg',
+        bgColor: 'bg-teal-50/40',
+    },
+    {
+        title: 'Hire Varsel Developer',
+        description: 'Enhance your cloud strategy with our skilled Amazon AWS developers. We specialize in deploying and managing secure, high-performance cloud environments and',
+        icon: '/logicmatrix/tech/varsel.svg',
+        bgColor: 'bg-slate-50',
+    }
 ];

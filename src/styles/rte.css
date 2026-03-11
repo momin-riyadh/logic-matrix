@@ -1,0 +1,229 @@
+.rte-root {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Avoid overflow:hidden here; it's the #1 killer of ::selection highlights */
+}
+
+.rte-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: hsl(var(--background));
+    border-bottom: 1px solid hsl(var(--border));
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.rte-body {
+    padding: 1rem 1.25rem;
+    cursor: text;
+    overflow-y: auto;
+    max-height: 560px;
+    min-height: 320px;
+    isolation: isolate;
+}
+
+/* Slack-style Scrollbar */
+.rte-body::-webkit-scrollbar {
+    width: 6px;
+}
+.rte-body::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 10px;
+}
+
+.rte-body .ProseMirror {
+    outline: none !important;
+    min-height: 280px;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: hsl(var(--foreground));
+    word-break: break-word;
+    /* IMPORTANT: must be normal, NOT pre-wrap.
+       pre-wrap breaks list rendering — bullets appear on wrong lines. */
+    white-space: normal;
+}
+
+.rte-body .ProseMirror ::selection {
+    background-color: #dce6ff !important;
+}
+
+.rte-body .ProseMirror p {
+    margin: 0 0 0.5rem 0 !important;
+}
+
+.rte-body .ProseMirror h1,
+.rte-body .ProseMirror h2,
+.rte-body .ProseMirror h3 {
+    margin: 1.25rem 0 0.5rem 0 !important;
+    font-weight: 700 !important;
+}
+
+.rte-body .ProseMirror :not(pre) > code {
+    background-color: hsl(var(--muted)) !important;
+    color: #e01e5a !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 4px !important;
+    font-size: 85% !important;
+    font-family:
+        ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas,
+        monospace !important;
+    border: 1px solid hsl(var(--border) / 0.5) !important;
+}
+
+.rte-body .ProseMirror pre {
+    background: #f8f8f8 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    margin: 0.5rem 0 !important;
+    font-family: ui-monospace, monospace !important;
+    white-space: pre !important;
+    overflow-x: auto !important;
+}
+
+.rte-body .ProseMirror pre code {
+    color: #2c2d30 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    font-size: 0.85rem !important;
+    white-space: inherit !important;
+}
+
+.rte-body .ProseMirror blockquote {
+    border-left: 4px solid #dddddd !important;
+    padding-left: 1rem !important;
+    margin: 0.5rem 0 !important;
+    color: hsl(var(--muted-foreground)) !important;
+    font-style: normal !important;
+}
+
+/* Tailwind Preflight zeroes out list-style-type, padding, and display.
+   Every property must be forced back with !important.                         */
+
+.rte-body .ProseMirror ul {
+    list-style-type: disc !important;
+    padding-left: 1.5rem !important;
+    margin: 0 0 0.5rem 0 !important;
+}
+
+.rte-body .ProseMirror ul ul {
+    list-style-type: circle !important;
+    margin-bottom: 0 !important;
+}
+
+.rte-body .ProseMirror ul ul ul {
+    list-style-type: square !important;
+}
+
+.rte-body .ProseMirror ol {
+    list-style-type: decimal !important;
+    padding-left: 1.5rem !important;
+    margin: 0 0 0.5rem 0 !important;
+}
+
+.rte-body .ProseMirror ol ol {
+    list-style-type: lower-alpha !important;
+    margin-bottom: 0 !important;
+}
+
+/* Tailwind Preflight sets li { display: block } — must restore to list-item */
+.rte-body .ProseMirror li {
+    display: list-item !important;
+    margin-bottom: 0.15rem !important;
+}
+
+/* Tiptap v3 wraps each li's text in a <p>.
+   Setting display:inline collapses it onto the same line as the bullet marker.
+   Without this, every bullet item gets a blank first line.                     */
+.rte-body .ProseMirror li > p {
+    display: inline !important;
+    margin: 0 !important;
+}
+
+/* Multi-paragraph list items (Shift+Enter second para) — restore block */
+.rte-body .ProseMirror li > p + p {
+    display: block !important;
+    margin-top: 0.2rem !important;
+}
+
+/* ─── Images & Resize (tiptap-extension-resize-image) ─────────────────────── */
+
+.rte-body .ProseMirror img {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 6px !important;
+    margin: 0.75rem 0 !important;
+    border: 1px solid hsl(var(--border)) !important;
+}
+
+/* Wrapper div injected by tiptap-extension-resize-image */
+.rte-body .ProseMirror .image-resizer {
+    display: inline-flex !important;
+    position: relative !important;
+    max-width: 100% !important;
+    line-height: 0;
+}
+
+/* Selection ring around the resize wrapper */
+.rte-body .ProseMirror .image-resizer.ProseMirror-selectednode {
+    outline: 2px solid hsl(var(--primary)) !important;
+    outline-offset: 2px !important;
+    border-radius: 6px;
+}
+
+/* Corner drag handles */
+.rte-body .ProseMirror .image-resizer__handle {
+    width: 9px !important;
+    height: 9px !important;
+    background: hsl(var(--primary)) !important;
+    border: 2px solid hsl(var(--background)) !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    z-index: 20 !important;
+}
+
+/* Alignment classes the extension applies to the wrapper */
+.rte-body .ProseMirror .image-resizer[data-align='left'] {
+    margin-right: auto !important;
+}
+.rte-body .ProseMirror .image-resizer[data-align='center'] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.rte-body .ProseMirror .image-resizer[data-align='right'] {
+    margin-left: auto !important;
+}
+
+/* ── Add these rules to the BOTTOM of your rich-text-editor.css ─────────────── */
+
+/* Preview mode: reuses .rte-body styles but strips editor-specific constraints */
+.rte-body.rte-preview {
+    max-height: none !important;
+    min-height: unset !important;
+    overflow-y: visible !important;
+    cursor: default !important;
+    padding: 0 !important;
+    /* Remove the editor's isolation so the dialog's scroll works correctly */
+    isolation: auto !important;
+}
+
+/* In preview, the resize wrapper should behave as a normal block */
+.rte-body.rte-preview .image-resizer {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    /* Hide the resize handles — not needed in read-only preview */
+    pointer-events: none;
+}
+
+.rte-body.rte-preview .image-resizer__handle {
+    display: none !important;
+}
+
+.rte-body.rte-preview img {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 1rem auto !important;
+}

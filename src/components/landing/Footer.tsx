@@ -10,6 +10,7 @@ export default function Footer() {
 
   const company = [
     'About Us',
+    'Hire Us',
     'Contact',
     'Career',
     'Terms & Conditions',
@@ -57,7 +58,18 @@ export default function Footer() {
             <ul className='mt-5 space-y-4 text-[15px] text-white/85'>
               {services.map((item) => (
                 <li key={item}>
-                  <a className='transition hover:text-white' href='#'>
+                  <a
+                    className='transition hover:text-white'
+                    href={
+                      item === 'Custom Software Development'
+                        ? '/services#software-design'
+                        : item === 'Cloud & DevOps'
+                        ? '/services#cloud-devops'
+                        : item === 'DevSecOps'
+                        ? '/services#devsecops'
+                        : '#'
+                    }
+                  >
                     {item}
                   </a>
                 </li>
@@ -77,6 +89,18 @@ export default function Footer() {
                         ? '/terms-and-conditions'
                         : item === 'Privacy Policy'
                         ? '/privacy-policy'
+                        : item === 'Hire Us'
+                        ? '/hire-us'
+                        : item === 'About Us'
+                        ? '/about'
+                        : item === 'Contact'
+                        ? '/contact-us'
+                        : item === 'Career'
+                        ? '/career'
+                        : item === 'Portfolio'
+                        ? '/portfolio'
+                        : item === 'Testimonials'
+                        ? '/#testimonials'
                         : '#'
                     }
                   >

@@ -35,6 +35,7 @@ export default function ServicesPage() {
                 primaryAction={{label: 'Hire Us', href: '/contact'}}
                 secondaryAction={{label: 'Book a Meeting', href: '/contact'}}
                 backgroundSrc='/logicmatrix/aboutus_hero_bg.png'
+                heightVariant="compact"
             />
 
             <ServiceGridSection data={softwareDesignServices} />

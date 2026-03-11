@@ -19,6 +19,7 @@ export default function CareerPage() {
                 primaryAction={{label: 'Hire Us', href: '/contact'}}
                 secondaryAction={{label: 'Book a Meeting', href: '/contact'}}
                 backgroundSrc='/logicmatrix/aboutus_hero_bg.png'
+                heightVariant="compact"
             />
 
             {/* Building Your Dreams Section */}

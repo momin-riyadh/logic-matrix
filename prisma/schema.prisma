@@ -6,6 +6,37 @@ datasource db {
     provider = "postgresql"
 }
 
+enum Role {
+    ADMIN
+    USER
+}
+
+enum ProjectStatus {
+    ONGOING
+    COMPLETED
+}
+
+enum BlogStatus {
+    DRAFT
+    PUBLISHED
+    ARCHIVED
+}
+
+enum ApplicationStatus {
+    PENDING
+    REVIEWED
+    SHORTLISTED
+    REJECTED
+}
+
+enum JobType {
+    FULL_TIME
+    PART_TIME
+    CONTRACT
+    INTERNSHIP
+    REMOTE
+}
+
 model User {
     id            String    @id @default(cuid())
     name          String?
@@ -13,8 +44,10 @@ model User {
     emailVerified DateTime?
     image         String?
     password      String?
+    role          Role      @default(USER)
     accounts      Account[]
     sessions      Session[]
+    blogs         Blog[]
     createdAt     DateTime  @default(now())
     updatedAt     DateTime  @updatedAt
 }
@@ -70,4 +103,330 @@ model EmailVerificationToken {
     expires DateTime
 
     @@unique([email, token])
+}
+
+model CompanyInfo {
+    id              String   @id @default(cuid())
+    name            String
+    heroTitle       String
+    heroDescription String   @db.Text
+    aboutTitle      String
+    aboutContent    String   @db.Text
+    yearsExperience Int      @default(20)
+    projectsCount   Int      @default(800)
+    updatedAt       DateTime @updatedAt
+
+    values      Value[]
+    teamMembers TeamMember[]
+}
+
+model Value {
+    id          String      @id @default(cuid())
+    title       String
+    description String      @db.Text
+    icon        String?
+    companyId   String
+    company     CompanyInfo @relation(fields: [companyId], references: [id])
+}
+
+model Service {
+    id               String    @id @default(cuid())
+    title            String
+    slug             String    @unique
+    shortDescription String
+    description      String    @db.Text
+    iconUrl          String?
+    coverImageUrl    String?
+    sortOrder        Int       @default(0)
+    isActive         Boolean   @default(true)
+    createdAt        DateTime  @default(now())
+    updatedAt        DateTime  @updatedAt
+    projects         Project[]
+}
+
+// about us
+model AboutUsHero {
+    id          String   @id @default(cuid())
+    title       String
+    subtitle    String
+    description String   @db.Text
+    buttonText  String
+    buttonLink  String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model AboutUsMetric {
+    id          String   @id @default(cuid())
+    title       String
+    description String   @db.Text
+    imageUrl    String?
+    order       Int      @default(0)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model WhyChooseUsReason {
+    id          String   @id @default(cuid())
+    title       String
+    description String   @db.Text
+    icon        String // can store icon name or emoji
+    color       String // hex color code
+    order       Int      @default(0)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model TeamMember {
+    id            String       @id @default(cuid())
+    name          String
+    role          String
+    bio           String       @db.Text
+    imageUrl      String
+    linkedIn      String?
+    twitter       String?
+    email         String?
+    order         Int          @default(0)
+    featured      Boolean      @default(false)
+    createdAt     DateTime     @default(now())
+    updatedAt     DateTime     @updatedAt
+    companyInfo   CompanyInfo? @relation(fields: [companyInfoId], references: [id])
+    companyInfoId String?
+}
+
+model AboutUsSection {
+    id          String   @id @default(cuid())
+    key         String   @unique // e.g., "our-experts", "executive-profiles"
+    title       String
+    description String   @db.Text
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+// portfolio
+model Portfolio {
+    id          String          @id @default(cuid())
+    title       String
+    slug        String          @unique
+    category    String
+    description String          @db.Text
+    client      String?
+    progress    Int             @default(0) // Project completion progress (0-100)
+    coverImage  String
+    images      String[]
+    tags        String[]
+    status      PortfolioStatus @default(DRAFT)
+    featured    Boolean         @default(false)
+    liveUrl     String?
+    githubUrl   String?
+    completedAt DateTime?
+    createdAt   DateTime        @default(now())
+    updatedAt   DateTime        @updatedAt
+
+    features PortfolioFeature[]
+    stats    PortfolioStat[]
+
+    @@index([category])
+    @@index([status])
+    @@index([featured])
+}
+
+model PortfolioFeature {
+    id          String    @id @default(cuid())
+    portfolioId String
+    title       String
+    description String?
+    portfolio   Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+}
+
+model PortfolioStat {
+    id          String    @id @default(cuid())
+    portfolioId String
+    label       String
+    value       String
+    icon        String? // Lucide icon name (e.g., "TrendingUp", "Users")
+    portfolio   Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+}
+
+enum PortfolioStatus {
+    DRAFT
+    PUBLISHED
+    ARCHIVED
+}
+
+// blog posts
+model Blog {
+    id         String     @id @default(cuid())
+    title      String
+    slug       String     @unique
+    excerpt    String?
+    content    String?    @db.Text // null for external blogs
+    coverImage String?
+    status     BlogStatus @default(DRAFT)
+    tags       String[]
+    author     String
+
+    // External blog fields
+    isExternal Boolean @default(false)
+    sourceUrl  String? // url of the external blog post
+
+    publishedAt DateTime?
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    user        User?     @relation(fields: [userId], references: [id])
+    userId      String?
+
+    @@map("blogs")
+}
+
+model Project {
+    id               String         @id @default(cuid())
+    title            String
+    slug             String         @unique
+    clientName       String?
+    shortDescription String
+    description      String         @db.Text
+    coverImageUrl    String?
+    liveUrl          String?
+    status           ProjectStatus  @default(COMPLETED)
+    startDate        DateTime?
+    endDate          DateTime?
+    serviceId        String?
+    service          Service?       @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+    technologies     Technology[]
+    images           ProjectImage[]
+    isFeatured       Boolean        @default(false)
+    sortOrder        Int            @default(0)
+    createdAt        DateTime       @default(now())
+    updatedAt        DateTime       @updatedAt
+}
+
+model Technology {
+    id       String    @id @default(cuid())
+    name     String    @unique
+    iconUrl  String?
+    projects Project[]
+}
+
+model ProjectImage {
+    id        String  @id @default(cuid())
+    imageUrl  String
+    altText   String?
+    sortOrder Int     @default(0)
+    projectId String
+    project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model JobPost {
+    id           String           @id @default(cuid())
+    title        String
+    slug         String           @unique
+    department   String?
+    location     String?
+    jobType      JobType
+    experience   String?
+    salaryRange  String?
+    description  String           @db.Text
+    requirements String           @db.Text
+    benefits     String?          @db.Text
+    isActive     Boolean          @default(true)
+    deadline     DateTime?
+    applications JobApplication[]
+    createdAt    DateTime         @default(now())
+    updatedAt    DateTime         @updatedAt
+}
+
+model JobApplication {
+    id             String            @id @default(cuid())
+    jobPostId      String
+    jobPost        JobPost           @relation(fields: [jobPostId], references: [id], onDelete: Cascade)
+    applicantName  String
+    applicantEmail String
+    phone          String?
+    coverLetter    String?           @db.Text
+    resumeUrl      String
+    portfolioUrl   String?
+    status         ApplicationStatus @default(PENDING)
+    createdAt      DateTime          @default(now())
+    updatedAt      DateTime          @updatedAt
+}
+
+model ContactMessage {
+    id        String   @id @default(cuid())
+    name      String
+    email     String
+    phone     String?
+    subject   String?
+    message   String   @db.Text
+    createdAt DateTime @default(now())
+}
+
+model SocialLink {
+    id        String  @id @default(cuid())
+    platform  String
+    url       String
+    iconUrl   String?
+    sortOrder Int     @default(0)
+}
+
+model Testimonial {
+    id                String   @id @default(cuid())
+    clientName        String
+    clientDesignation String?
+    clientCompany     String?
+    clientImageUrl    String?
+    content           String   @db.Text
+    rating            Int?     @default(5)
+    isActive          Boolean  @default(true)
+    sortOrder         Int      @default(0)
+    createdAt         DateTime @default(now())
+}
+
+// privcy policy, terms and conditions etc.
+model LegalDocument {
+    id   String @id @default(cuid())
+    slug String @unique // "privacy-policy", "terms-conditions"
+
+    title         String // "Privacy Policy"
+    introText     String    @db.Text
+    effectiveDate String?
+    lastUpdated   DateTime? @updatedAt
+
+    sections LegalSection[]
+}
+
+model LegalSection {
+    id String @id @default(cuid())
+
+    order   Int
+    heading String // "Introduction", "Information We Collect"
+    content String @db.Text
+
+    pageId String
+    page   LegalDocument @relation(fields: [pageId], references: [id], onDelete: Cascade)
+}
+
+// for content blocks on pages like "Our Approach", "Industries We Serve" etc.
+model ContentBlockPage {
+    id              String @id @default(cuid())
+    slug            String @unique // e.g., "our-approach", "industries-we-serve"
+    heroTitle       String
+    heroDescription String @db.Text
+
+    blocks ContentBlock[]
+
+    updatedAt DateTime @updatedAt
+}
+
+model ContentBlock {
+    id          String  @id @default(cuid())
+    order       Int
+    title       String
+    description String  @db.Text
+    imageUrl    String?
+
+    alignment String @default("auto") // "left", "right", or "auto"
+
+    pageId String
+    page   ContentBlockPage @relation(fields: [pageId], references: [id], onDelete: Cascade)
 }

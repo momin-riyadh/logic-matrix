@@ -5,7 +5,7 @@ import { prisma } from './lib/prisma';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-    adapter: PrismaAdapter(prisma),
+    adapter: PrismaAdapter(prisma) as any,
     session: {
         strategy: 'jwt',
     },
@@ -54,6 +54,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     id: user.id,
                     email: user.email,
                     name: user.name,
+                    role: user.role,
                     emailVerified: user.emailVerified,
                 };
             },
@@ -62,7 +63,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.id = user.id;
+                token.id = user.id as string;
+                token.role = user.role;
                 token.emailVerified = user.emailVerified;
             }
             return token;
@@ -70,6 +72,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         async session({ session, token }) {
             if (token && session.user) {
                 session.user.id = token.id as string;
+                session.user.role = token.role as 'ADMIN' | 'USER';
                 session.user.emailVerified = token.emailVerified as Date;
             }
             return session;

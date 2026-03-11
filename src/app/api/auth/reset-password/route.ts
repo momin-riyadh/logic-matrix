@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import { registerSchema } from '@/lib/validations/auth';
 import { prisma } from '@/lib/prisma';
 import { generateVerificationToken } from '@/lib/tokens';
-import { sendVerificationEmail } from '@/lib/email';
+import { sendVerificationEmail } from '@/lib/email/email';
 
 export async function POST(req: NextRequest) {
     try {

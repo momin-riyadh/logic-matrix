@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { forgotPasswordSchema } from '@/lib/validations/auth';
 import { prisma } from '@/lib/prisma';
 import { generatePasswordResetToken } from '@/lib/tokens';
-import { sendPasswordResetEmail } from '@/lib/email';
+import { sendPasswordResetEmail } from '@/lib/email/email';
 import { ZodError } from 'zod';
 
 export async function POST(req: NextRequest) {

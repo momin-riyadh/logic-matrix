@@ -25,6 +25,7 @@ export default function PortfolioPage() {
                 primaryAction={{ label: 'Hire Us', href: '/contact' }}
                 secondaryAction={{ label: 'Book a Meeting', href: '/contact' }}
                 backgroundSrc="/logicmatrix/hero-bg.png"
+                heightVariant="compact"
             />
 
             {/* Featured Section: Highlights the most important project */}

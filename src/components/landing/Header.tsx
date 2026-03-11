@@ -1,17 +1,24 @@
 'use client';
 
-import {useState} from 'react';
 import {navLinks} from './landing-data';
 import Link from "next/link";
 import Image from 'next/image';
+import {Menu} from 'lucide-react';
+import {
+    Sheet,
+    SheetContent,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet";
 
 export default function Header() {
-    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <header className='shadow-sm'>
-            <div className='flex w-full max-w-375 justify-self-end rounded-none rounded-bl-full bg-primary'>
-                <div className='mx-auto mr-[17%] w-full max-w-[75%] text-white'>
+            {/*Top Header Part*/}
+            <div className='flex w-full lg:max-w-[75%] justify-self-end rounded-none lg:rounded-bl-full bg-primary'>
+                <div className='mx-auto lg:mr-[17%] w-full text-white'>
                     <div className='mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-2'>
                         <div className='flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium'>
               <span className='inline-flex items-center gap-2'>
@@ -20,7 +27,7 @@ export default function Header() {
                   <rect x='3' y='5' width='18' height='14' rx='2'/>
                   <path d='m3 7 9 6 9-6'/>
                 </svg>
-                mail@logicmatrix.com
+                <span className='hidden sm:inline'>mail@logicmatrix.com</span>
               </span>
                             <span className='inline-flex items-center gap-2'>
                 <svg className='h-4 w-4' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.7'
@@ -28,7 +35,7 @@ export default function Header() {
                   <path
                       d='M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1A19.5 19.5 0 0 1 3.2 8.8 19.8 19.8 0 0 1 0 0.2 2 2 0 0 1 2 0h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L6 8.9a16 16 0 0 0 7.1 7.1l2.5-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 1.9z'/>
                 </svg>
-                +880 123456 76
+                <span className='hidden sm:inline'>+880 123456 76</span>
               </span>
                             <span className='inline-flex items-center gap-2'>
                 <svg className='h-4 w-4' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.7'
@@ -36,7 +43,7 @@ export default function Header() {
                   <path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/>
                   <circle cx='12' cy='7' r='4'/>
                 </svg>
-                Hire Us Today
+                <span className='hidden sm:inline'>Hire Us Today</span>
               </span>
                             <span className='inline-flex items-center gap-2'>
                 <svg className='h-4 w-4' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='1.7'
@@ -45,7 +52,7 @@ export default function Header() {
                   <path d='m7 10 5 5 5-5'/>
                   <path d='M5 21h14'/>
                 </svg>
-                Brochure
+                <span className='hidden sm:inline'>Brochure</span>
               </span>
                         </div>
                         <div className='flex items-center gap-3'>
@@ -61,13 +68,13 @@ export default function Header() {
                     </div>
                 </div>
             </div>
+            {/*Top Header Part*/}
 
             <div className='bg-white'>
-                <div className='mx-auto flex max-w-[75%] items-center justify-between gap-6 px-6 py-4'>
+                <div
+                    className='mx-auto flex w-full max-w-none items-center justify-between gap-6 px-6 py-4 lg:max-w-[75%]'>
                     <Link className='flex items-center gap-3' href={"/"}>
-
                         <Image src={"/logo.svg"} width={180} height={50} alt={"logo"}/>
-
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -110,52 +117,65 @@ export default function Header() {
                     <div className='flex items-center gap-3'>
                         <Link
                             href="/contact-us"
-                            className='inline-flex items-center justify-center rounded-sm bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90'
+                            className='inline-flex items-center justify-center whitespace-nowrap rounded-sm bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90'
                         >
                             Contact Us
                         </Link>
-                        <button
-                            className='inline-flex items-center justify-center rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 lg:hidden'
-                            type='button'
-                            aria-expanded={isOpen}
-                            aria-controls='mobile-nav'
-                            onClick={() => setIsOpen((prev) => !prev)}
-                        >
-                            Menu
-                        </button>
-                    </div>
-                </div>
-
-                <div className={`mx-auto max-w-6xl px-6 pb-4 lg:hidden ${isOpen ? '' : 'hidden'}`} id='mobile-nav'>
-                    <nav className='flex flex-col gap-3 text-sm font-semibold text-slate-700' aria-label='Mobile'>
-                        {navLinks.map((link) =>
-                            link.children ? (
-                                <details className='group rounded-lg px-3 py-2 hover:bg-slate-100' key={link.label}>
-                                    <summary className='flex cursor-pointer list-none items-center justify-between'>
-                                        {link.label}
-                                        <svg className='h-4 w-4 text-slate-500 transition group-open:rotate-180'
-                                             viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'
-                                             strokeLinecap='round' strokeLinejoin='round' aria-hidden='true'>
-                                            <path d='m6 9 6 6 6-6'/>
-                                        </svg>
-                                    </summary>
-                                    <div className='mt-2 flex flex-col gap-2 pl-3 text-sm font-medium text-slate-600'>
-                                        {link.children.map((child) => (
-                                            <a className='rounded-md px-2 py-1 hover:bg-slate-100' href={child.href}
-                                               key={child.label}>
-                                                {child.label}
+                        <Sheet>
+                            <SheetTrigger asChild>
+                                <button
+                                    className='inline-flex items-center justify-center rounded-full border border-slate-200 p-2 text-sm font-semibold text-slate-700 lg:hidden'
+                                    type='button'
+                                    aria-label='Toggle menu'
+                                >
+                                    <Menu className="h-6 w-6"/>
+                                </button>
+                            </SheetTrigger>
+                            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                                <SheetHeader>
+                                    <SheetTitle className="text-left">
+                                        <Image src={"/logo.svg"} width={150} height={40} alt={"logo"}/>
+                                    </SheetTitle>
+                                </SheetHeader>
+                                <nav className='mt-8 flex flex-col gap-4 text-sm font-semibold text-slate-700'
+                                     aria-label='Mobile'>
+                                    {navLinks.map((link) =>
+                                        link.children ? (
+                                            <details className='group rounded-lg px-3 py-2 hover:bg-slate-100'
+                                                     key={link.label}>
+                                                <summary
+                                                    className='flex cursor-pointer list-none items-center justify-between'>
+                                                    {link.label}
+                                                    <svg
+                                                        className='h-4 w-4 text-slate-500 transition group-open:rotate-180'
+                                                        viewBox='0 0 24 24' fill='none' stroke='currentColor'
+                                                        strokeWidth='2'
+                                                        strokeLinecap='round' strokeLinejoin='round' aria-hidden='true'>
+                                                        <path d='m6 9 6 6 6-6'/>
+                                                    </svg>
+                                                </summary>
+                                                <div
+                                                    className='mt-2 flex flex-col gap-2 pl-3 text-sm font-medium text-slate-600'>
+                                                    {link.children.map((child) => (
+                                                        <a className='rounded-md px-2 py-1 hover:bg-slate-100'
+                                                           href={child.href}
+                                                           key={child.label}>
+                                                            {child.label}
+                                                        </a>
+                                                    ))}
+                                                </div>
+                                            </details>
+                                        ) : (
+                                            <a className='rounded-lg px-3 py-2 hover:bg-slate-100' href={link.href}
+                                               key={link.label}>
+                                                {link.label}
                                             </a>
-                                        ))}
-                                    </div>
-                                </details>
-                            ) : (
-                                <a className='rounded-lg px-3 py-2 hover:bg-slate-100' href={link.href}
-                                   key={link.label}>
-                                    {link.label}
-                                </a>
-                            ),
-                        )}
-                    </nav>
+                                        ),
+                                    )}
+                                </nav>
+                            </SheetContent>
+                        </Sheet>
+                    </div>
                 </div>
             </div>
         </header>

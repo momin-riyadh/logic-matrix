@@ -26,6 +26,7 @@ export default function DesignAndDevelopmentProcessPage() {
                 primaryAction={{label: 'Hire Us', href: '/contact'}}
                 secondaryAction={{label: 'Book a Meeting', href: '/contact'}}
                 backgroundSrc='/logicmatrix/aboutus_hero_bg.png'
+                heightVariant="compact"
             />
             <LeftImageCard
                 title='Our design and development process helps'

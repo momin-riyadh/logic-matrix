@@ -9,6 +9,8 @@ export default function ContactUsPage() {
                 title="Let's Explore Our Portfolio"
                 description="Explore our recent Web, eCommerce and Mobile app projects"
                 badge=""
+                heightVariant="compact"
+                backgroundSrc="/assets/images/contact_bg.jpg"
             />
 
             {/* Talk To An Expert Section */}

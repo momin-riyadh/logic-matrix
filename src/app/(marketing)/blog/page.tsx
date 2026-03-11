@@ -16,8 +16,9 @@ export default function BlogPage() {
         primaryAction={{ label: 'Hire Us', href: '#' }}
         secondaryAction={{ label: 'Book a Meeting', href: '#' }}
         backgroundSrc="/logicmatrix/hero-bg.png"
+        heightVariant="compact"
       />
-      
+
       <BlogIntro />
       <BlogFilters />
       <BlogGrid />
